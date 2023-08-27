@@ -10,6 +10,7 @@ const Card = ({ title, children, ...props }) => {
 };
 
 const CardConatiner = styled.div`
+  position: relative;
   width: 100%;
   height: 500px;
   padding: 24px 18px;
