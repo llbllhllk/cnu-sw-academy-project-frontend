@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const Container = ({ children }) => {
-  return <StyledContainer>{children}</StyledContainer>;
+const Container = ({ children, ...props }) => {
+  return <StyledContainer {...props}>{children}</StyledContainer>;
 };
 
 const StyledContainer = styled.div`
