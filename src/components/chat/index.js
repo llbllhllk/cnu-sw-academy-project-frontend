@@ -9,7 +9,7 @@ const Chat = () => {
       <ChatContainer></ChatContainer>
       <Form>
         <Input type='text' placeholder='메시지를 입력하세요.' />
-        <Button type='submit' width='100'>
+        <Button type='submit' width='80px'>
           전송
         </Button>
       </Form>

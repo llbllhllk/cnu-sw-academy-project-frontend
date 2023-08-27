@@ -11,8 +11,8 @@ const Button = ({ type, children, onClick, width, height, ...props }) => {
 const Container = styled.button`
   display: inline-block;
   border-radius: 14px;
-  width: ${({ width }) => (width ? `${width}px` : `100%`)};
-  height: ${({ height }) => (height ? `${height}px` : `auto`)};
+  width: ${({ width }) => (width ? `${width}` : `100%`)};
+  height: ${({ height }) => (height ? `${height}` : `auto`)};
   padding: 4px 12px;
   background-color: #ff9704;
   color: #fff;
