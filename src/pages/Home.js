@@ -2,6 +2,9 @@ import Chat from 'components/chat';
 import Container from 'components/common/Container';
 import Header from 'components/header';
 import styled from 'styled-components';
+import Board from 'components/board'
+import HotBoard from 'components/board/HotBoard';
+
 
 const Home = () => {
   return (
@@ -11,7 +14,8 @@ const Home = () => {
         <main>
           {/* Slider */}
           <FeedBox>
-            {/* <Board /> */}
+            <Board />
+            <HotBoard/>
             <Chat />
           </FeedBox>
         </main>

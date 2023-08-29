@@ -3,9 +3,9 @@ import BoardItem from './BoardItem'
 import Card from 'components/common/Card'
 import Button from 'components/common/Button'
 
-const Board = () => {
+const HotBoard = () => {
   return (
-    <Card title="자유게시판">
+    <Card title="Hot 게시판">
         <button style={{position:'absolute',top:'35px', right:'20px'}}>더보기</button>
         <BoardItem />
         <BoardItem />
@@ -21,4 +21,4 @@ const Board = () => {
 }
 
 
-export default Board
+export default HotBoard
