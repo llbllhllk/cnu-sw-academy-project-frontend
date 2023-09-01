@@ -1,12 +1,26 @@
-const MsgBox = ({ item, name, msg }) => {
+import styled from 'styled-components';
+
+const MsgBox = ({ item, name }) => {
   return (
-    <div className={item.name === name ? 'me' : 'other'}>
-      <span>
-        <b>{item.name}</b>
-      </span>
+    <MsgBoxLayout className={item.name === name ? 'me' : 'other'}>
+      <Name>
+        <b>{item.name}:</b>
+      </Name>
       <span>{item.msg}</span>
-    </div>
+    </MsgBoxLayout>
   );
 };
 
 export default MsgBox;
+
+const MsgBoxLayout = styled.div`
+  margin-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
+
+const Name = styled.strong`
+  margin-right: 10px;
+`;
