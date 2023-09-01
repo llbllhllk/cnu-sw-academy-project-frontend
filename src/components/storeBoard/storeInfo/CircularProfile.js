@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const CircularProfile = ({ imageUrl, size }) => {
   return (
     <CircularProfileContainer size={size}>
-      <ProfileImage src={imageUrl} alt="Profile" />
+      <ProfileImage src={imageUrl} alt='Profile' />
     </CircularProfileContainer>
   );
 };
@@ -24,7 +24,7 @@ const ProfileImage = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border: 2px solid black; 
+  border: 2px solid black;
 `;
 
 export default CircularProfile;

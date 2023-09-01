@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const ReviewProfileBox = ({width, height, top, children,...props}) => {
+const ReviewProfileBox = ({ width, height, top, children, ...props }) => {
   return (
     <ReviewInfoBoxStyle width={width} height={height} top={top} {...props}>
-    {children}
+      {children}
     </ReviewInfoBoxStyle>
   );
 };
@@ -15,8 +15,6 @@ const ReviewInfoBoxStyle = styled.div`
   border: 2px solid #d9d9d9;
   border-radius: 15px;
   background-color: #f5f5f5;
-
 `;
-
 
 export default ReviewProfileBox;

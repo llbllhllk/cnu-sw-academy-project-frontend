@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const BoardItem = () => {
+const BoardItem = ({ title }) => {
   return (
     <BoardItemStyle>
       <BoardItemName>익명n</BoardItemName>
-      <BoardItemText>동해물과 백두산이</BoardItemText>
+      <BoardItemText>{title}</BoardItemText>
     </BoardItemStyle>
   );
 };

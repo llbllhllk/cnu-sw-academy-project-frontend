@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const StoreInfoBox = ({width, height, top, children,...props}) => {
+const StoreInfoBox = ({ width, height, top, children, ...props }) => {
   return (
     <StoreInfoBoxStyle width={width} height={height} top={top} {...props}>
-    {children}
+      {children}
     </StoreInfoBoxStyle>
   );
 };
@@ -15,6 +15,5 @@ const StoreInfoBoxStyle = styled.div`
   border: 1.5px solid #d9d9d9;
   border-radius: 7px;
 `;
-
 
 export default StoreInfoBox;
