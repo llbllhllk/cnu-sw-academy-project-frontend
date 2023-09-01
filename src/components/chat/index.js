@@ -8,7 +8,7 @@ const Chat = () => {
   const [msg, setMsg] = useState('');
   const [name, setName] = useState('');
   const [chatt, setChatt] = useState([]);
-  const [chkLog, setChkLog] = useState(false);
+  // const [chkLog, setChkLog] = useState(false);
   const [socketData, setSocketData] = useState();
 
   const ws = useRef(null); //webSocket을 담는 변수,
@@ -32,20 +32,18 @@ const Chat = () => {
     };
   });
 
+  useEffect(() => {
+    webSocketLogin();
+  }, []);
+
   const send = useCallback(() => {
-    if (!chkLog) {
-      webSocketLogin();
-      setChkLog(true);
-    }
     if (msg !== '') {
       const token = localStorage.getItem('token');
       const data = {
         token: JSON.parse(token),
         msg,
       }; //전송 데이터(JSON)
-
       const temp = JSON.stringify(data);
-
       if (ws.current.readyState === 0) {
         ws.current.onopen = () => {
           ws.current.send(temp);
