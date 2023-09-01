@@ -68,9 +68,11 @@ const Chat = () => {
         <div id='chatt'>
           <ChatContainer id='talk'>
             <div className='talk-shadow'></div>
-            {chatt.map((item, idx) => (
-              <MsgBox key={idx} name={name} item={item} />
-            ))}
+            {chatt.map((item, idx) => {
+              const chatContainer = document.getElementById('talk');
+              chatContainer.scrollTop = chatContainer.scrollHeight;
+              return <MsgBox key={idx} name={name} item={item} />;
+            })}
           </ChatContainer>
           <Form id='sendZone'>
             <TextArea
@@ -98,6 +100,14 @@ const Chat = () => {
 const ChatContainer = styled.div`
   height: 300px;
   overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & {
+    scrollbar-width: none;
+  }
 `;
 
 const Form = styled.div`
@@ -117,6 +127,7 @@ const Form = styled.div`
 `;
 
 const TextArea = styled.textarea`
+  padding: 12px;
   display: block;
   border: 1px solid #d9d9d9;
   border-radius: 14px;
