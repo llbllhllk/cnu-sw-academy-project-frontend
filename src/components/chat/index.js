@@ -1,10 +1,10 @@
+import MsgBox from './MsgBox';
 import Button from 'components/common/Button';
 import Card from 'components/common/Card';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const Chat = () => {
-  const textareaRef = useRef();
   const [msg, setMsg] = useState('');
   const [name, setName] = useState('');
   const [chatt, setChatt] = useState([]);
@@ -12,16 +12,7 @@ const Chat = () => {
   const [socketData, setSocketData] = useState();
 
   const ws = useRef(null); //webSocket을 담는 변수,
-  //컴포넌트가 변경될 때 객체가 유지되어야하므로 'ref'로 저장
-
-  const msgBox = chatt.map((item, idx) => (
-    <div key={idx} className={item.name === name ? 'me' : 'other'}>
-      <span>
-        <b>{item.name}</b>
-      </span>{' '}
-      <span>{item.msg}</span>
-    </div>
-  ));
+  const textareaRef = useRef();
 
   useEffect(() => {
     if (socketData !== undefined) {
@@ -77,7 +68,9 @@ const Chat = () => {
         <div id='chatt'>
           <ChatContainer id='talk'>
             <div className='talk-shadow'></div>
-            {msgBox}
+            {chatt.map((item, idx) => (
+              <MsgBox key={idx} name={name} item={item} />
+            ))}
           </ChatContainer>
           <Form id='sendZone'>
             <TextArea
