@@ -42,20 +42,30 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await fetchGetToken();
-      window.localStorage.setItem('token', JSON.stringify(token.token));
+      await fetchGetToken();
+      const [freeBoard, popularBoard] = await Promise.all([
+        fetchGetFreeBoard(),
+        fetchGetPopularBoard(),
+      ]);
       setBoard({
-        freeBoard: await fetchGetFreeBoard(),
-        popularBoard: await fetchGetPopularBoard(),
+        freeBoard,
+        popularBoard,
       });
     };
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.info(board.freeBoard);
-    console.info(board.popularBoard);
-  }, [board.freeBoard, board.popularBoard]);
+  useEffect(() => {}, []);
+  const boardField = [
+    {
+      title: '자유게시판',
+      board: board.freeBoard,
+    },
+    {
+      title: '인기게시판',
+      board: board.popularBoard,
+    },
+  ];
 
   return (
     <>
@@ -64,8 +74,9 @@ const Home = () => {
         <main>
           <Carousel data={restaurantData} />
           <FeedBox>
-            <Board title='자유게시판' board={board.freeBoard} />
-            <Board title='HOT 게시판' board={board.popularBoard} />
+            {boardField.map((board, idx) => (
+              <Board key={idx} title={board.title} board={board.board} />
+            ))}
             <Chat />
           </FeedBox>
         </main>
