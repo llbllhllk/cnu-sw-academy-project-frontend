@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <SubContainer>
-        <h1>Title</h1>
+        <h1>냠냠</h1>
         <Form>
           <Input type='text' width='300px' placeholder='검색할 내용을 입력하세요.' />
           <Button type='button' width='72px'>

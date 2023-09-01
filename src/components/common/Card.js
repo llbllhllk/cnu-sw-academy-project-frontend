@@ -12,7 +12,7 @@ const Card = ({ title, width, children, ...props }) => {
 const CardConatiner = styled.div`
   position: relative;
   width: ${({ width }) => (width ? `${width}` : `30%`)};
-  height: 500px;
+  min-height: 500px;
   padding: 24px 18px;
   border: 1px solid #d9d9d9;
   border-radius: 14px;

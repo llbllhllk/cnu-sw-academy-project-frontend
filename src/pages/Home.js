@@ -1,8 +1,11 @@
+import { fetchGetFreeBoard, fetchGetPopularBoard } from 'api/main';
+import { fetchGetToken } from 'api/token';
 import Board from 'components/board';
 import Carousel from 'components/carousel';
 import Chat from 'components/chat';
 import Container from 'components/common/Container';
 import Header from 'components/header';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const restaurantData = [
@@ -32,6 +35,38 @@ const restaurantData = [
 ];
 
 const Home = () => {
+  const [board, setBoard] = useState({
+    freeBoard: [],
+    popularBoard: [],
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchGetToken();
+      const [freeBoard, popularBoard] = await Promise.all([
+        fetchGetFreeBoard(),
+        fetchGetPopularBoard(),
+      ]);
+      setBoard({
+        freeBoard,
+        popularBoard,
+      });
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {}, []);
+  const boardField = [
+    {
+      title: '자유게시판',
+      board: board.freeBoard,
+    },
+    {
+      title: '인기게시판',
+      board: board.popularBoard,
+    },
+  ];
+
   return (
     <>
       <Container>
@@ -39,8 +74,9 @@ const Home = () => {
         <main>
           <Carousel data={restaurantData} />
           <FeedBox>
-            <Board title='자유게시판' />
-            <Board title='HOT 게시판' />
+            {boardField.map((board, idx) => (
+              <Board key={idx} title={board.title} board={board.board} />
+            ))}
             <Chat />
           </FeedBox>
         </main>

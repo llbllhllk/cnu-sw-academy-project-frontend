@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const BoardItem = () => {
+const BoardItem = ({ title }) => {
   return (
     <BoardItemStyle>
       <BoardItemName>익명n</BoardItemName>
-      <BoardItemText>동해물과 백두산이</BoardItemText>
+      <BoardItemText>{title}</BoardItemText>
     </BoardItemStyle>
   );
 };
@@ -13,11 +13,12 @@ const BoardItemStyle = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  border: 1px solid #000;
+  border: 1px solid #d9d9d9;
   border-radius: 7px;
   margin-top: 10px;
   margin-bottom: 35px;
   font-weight: border;
+  cursor: pointer;
 `;
 
 const BoardItemName = styled.p`
@@ -25,6 +26,7 @@ const BoardItemName = styled.p`
   margin: 0;
   padding: 15px 10px 10px 10px;
 `;
+
 const BoardItemText = styled.p`
   flex: 1;
   height: 50px;
