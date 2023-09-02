@@ -124,7 +124,6 @@ const Star = styled(StarIcon)`
 
 const WriteBox = styled.div`
   border: 2px solid #d9d9d9;
-  width: 500px;
   height: 40px;
   border-radius: 10px;
   background-color: #d9d9d9;
@@ -134,11 +133,13 @@ const WriteBox = styled.div`
 
 const ProfileContainer = styled.div`
   display: flex;
+  padding: 12px;
   align-items: center;
 `;
 
 const ProfileInfo = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   margin-left: 20px;
 `;
