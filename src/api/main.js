@@ -11,3 +11,7 @@ export const fetchGetPopularBoard = async () => {
 export const fetchGetSlider = async () => {
   return (await instance.get('/main/recent')).data;
 };
+
+export const fetchGetStoreList = async() => {
+  return (await instance.get('/boards/restaurantList')).data;
+}

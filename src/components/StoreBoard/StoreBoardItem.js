@@ -1,11 +1,11 @@
+// storelist 및 게시판에 들어가는 흰 박스
+
 import styled from 'styled-components';
 
-const BoardItem = ({ title,children }) => {
+const StoreBoardItem = ({ width,height,children, ...props }) => {
   return (
-    <BoardItemStyle>
-      {/* <BoardItemName>익명n</BoardItemName> */}
+    <BoardItemStyle width={width} height={height}>
       {children}
-      <BoardItemText>{title}</BoardItemText>
     </BoardItemStyle>
   );
 };
@@ -23,18 +23,4 @@ const BoardItemStyle = styled.div`
   cursor: pointer;
 `;
 
-// const BoardItemName = styled.p`
-//   height: 50px;
-//   margin: 0;
-//   padding: 15px 10px 10px 10px;
-// `;
-
-const BoardItemText = styled.p`
-  flex: 1;
-  height: 50px;
-  margin: 0;
-  padding: 15px 10px 10px 10px;
-  text-align: center;
-`;
-
-export default BoardItem;
+export default StoreBoardItem;

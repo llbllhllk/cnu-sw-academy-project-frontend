@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const Card = ({ title, width, children, ...props }) => {
+const Card = ({ title, width,height, children, ...props }) => {
   return (
-    <CardConatiner width={width} {...props}>
+    <CardConatiner width={width} height={height} {...props}>
       <Title>{title}</Title>
       {children}
     </CardConatiner>
@@ -12,6 +12,7 @@ const Card = ({ title, width, children, ...props }) => {
 const CardConatiner = styled.div`
   position: relative;
   width: ${({ width }) => (width ? `${width}` : `30%`)};
+  height: ${({ height }) => (height ? `${height}` : `30%`)};
   min-height: 500px;
   padding: 24px 18px;
   border: 1px solid #d9d9d9;
