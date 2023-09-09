@@ -1,4 +1,5 @@
 import instance from 'api';
+import axios from 'axios';
 
 export const fetchGetFreeBoard = async () => {
   return (await instance.get('/main/freeboard')).data;
@@ -13,5 +14,5 @@ export const fetchGetSlider = async () => {
 };
 
 export const fetchGetStoreList = async() => {
-  return (await instance.get('/boards/restaurantList')).data;
+  return (await axios.get('https://jsonplaceholder.typicode.com/posts')).data;
 }
