@@ -1,3 +1,4 @@
+// 페이지 네이션 컴포넌트임 storeboarditem을 여기서 써서, 오류 생기면 이거 고쳐야함
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import Pagination from 'react-js-pagination'
@@ -24,7 +25,7 @@ console.log(items*(page-1), items*(page-1)+items)
 
   return (
     <StyledDiv>
-      <h3>마인네하우스</h3>
+      <MainBoardTitle>식당이름 들어가야함</MainBoardTitle>
       
       {data.slice(
         items*(page-1),
@@ -73,6 +74,11 @@ const PaginationBox = styled.div`
 const StyledDiv = styled.div`
   position : relative;
   top: -30px;
+`
+
+const MainBoardTitle = styled.h3`
+  position: relative;
+  top : -5px;
 `
 
 export default Paging;
