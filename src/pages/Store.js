@@ -4,7 +4,8 @@ import StoreList from "components/StoreBoard/StoreList"; //  6-1, 6-2 스토어 
 import Button from "components/common/Button"; // 버튼 임포트
 import Paging from "components/StoreBoard/Paging"; // 페이지 네이션
 import Scroll from "components/StoreBoard/Scroll"; // 무한 스크롤링
- 
+// import Example from "components/common/StoreBoard2/Example";
+
 const Store = ({StoreTitle}) => {
 
   return (
@@ -19,7 +20,9 @@ const Store = ({StoreTitle}) => {
     
     <StyledBoard>
       <StoreMainBoard> 
+        {/* <Example/> */}
         <Paging/>
+        {/* 임시로 example로 바꿔놨지만 Paging으로 다시 바꿔야함 */}
         {/* 페이지 네이션 컴포넌트임 */}
       </StoreMainBoard>
     </StyledBoard>

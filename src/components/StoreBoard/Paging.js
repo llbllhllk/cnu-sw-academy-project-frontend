@@ -1,4 +1,4 @@
-// 페이지 네이션 컴포넌트임 storeboarditem을 여기서 써서, 오류 생기면 이거 고쳐야함
+// 6-1 페이지 네이션 컴포넌트임 storeboarditem을 여기서 써서, 오류 생기면 이거 고쳐야함
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import Pagination from 'react-js-pagination'
