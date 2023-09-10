@@ -25,7 +25,7 @@ const Scroll = () => {
         {data.map((restaurant, index) => (
           <StoreBoardItem key={index} height={'80px'}>
             {restaurant}
-          </StoreBoardItem>
+          </StoreBoardItem> // 클릭 이벤트
         ))}
       </ul>
     </div>
