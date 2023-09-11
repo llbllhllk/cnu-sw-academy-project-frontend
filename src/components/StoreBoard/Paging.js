@@ -15,7 +15,7 @@ const Paging = () => {
     const getClick = async () => {
       try {
         const response = await axios.get('http://43.201.204.106:8080/boards/55와인포차 본점?');
-        // const response = await axios.get(`http://43.201.204.106:8080/boards/${restaurant}?`);
+        //const response = await axios.get(`http://43.201.204.106:8080/boards/${restaurant}?`);
         setData(response.data);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
