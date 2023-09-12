@@ -1,28 +1,32 @@
+import React, {useState} from "react";
 import styled from "styled-components"
-import StoreMainBoard from "components/StoreBoard/StoreMainBoard"; // 6-1, 6-2 큰 게시판
-import StoreList from "components/StoreBoard/StoreList"; //  6-1, 6-2 스토어 리스트
-import Button from "components/common/Button"; // 버튼 임포트
-import Paging from "components/StoreBoard/Paging"; // 페이지 네이션
-import Scroll from "components/StoreBoard/Scroll"; // 무한 스크롤링
-// import Example from "components/common/StoreBoard2/Example";
+import StoreMainBoard from "components/StoreBoard/StoreMainBoard";
+import StoreList from "components/StoreBoard/StoreList";
+import Button from "components/common/Button";
+import Paging from "components/StoreBoard/Paging";
+import Scroll from "components/StoreBoard/Scroll";
 
+const Store = ({ StoreTitle }) => {
+  // 상위 컴포넌트에서 클릭 이벤트 처리 함수 정의
+  const [restaurant, setRestaurant] = useState("")
+  const handleRestaurantClick = (restaurant) => {
+    console.log(restaurant)
+    setRestaurant(restaurant);
+  };
 
-const Store = ({StoreTitle}) => {
-  
   return (
-  <>
-    <StyledList>
-      <h2 style={{ textAlign: "center" }}>Store List</h2>
-      <StoreList>
-        <Scroll/> 
-        {/* 무한스크롤 컴포넌트임. 안에 StoreBoardItem을 직접 사용함 */}
-      </StoreList>
-    </StyledList>
+    <>
+      <StyledList>
+        <h2 style={{ textAlign: "center" }}>Store List</h2>
+        <StoreList>
+          <Scroll onRestaurantClick={handleRestaurantClick} />
+        </StoreList>
+      </StyledList>
     
     <StyledBoard>
       <StoreMainBoard> 
         {/* <Example/> */}
-        <Paging/>
+        <Paging restaurant={restaurant}/>
         {/* 임시로 example로 바꿔놨지만 Paging으로 다시 바꿔야함 */}
         {/* 페이지 네이션 컴포넌트임 */}
       </StoreMainBoard>
