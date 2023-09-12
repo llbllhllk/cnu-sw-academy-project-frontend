@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import StoreBoardItem from './StoreBoardItem'
 
-const Scroll = () => {
+const Scroll = (props) => {
   const [data, setData] = useState([]); // 데이터를 저장할 상태
 
   const fetchAllData = async () => {

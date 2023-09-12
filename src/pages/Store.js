@@ -6,8 +6,9 @@ import Paging from "components/StoreBoard/Paging"; // 페이지 네이션
 import Scroll from "components/StoreBoard/Scroll"; // 무한 스크롤링
 // import Example from "components/common/StoreBoard2/Example";
 
-const Store = ({StoreTitle}) => {
 
+const Store = ({StoreTitle}) => {
+  
   return (
   <>
     <StyledList>

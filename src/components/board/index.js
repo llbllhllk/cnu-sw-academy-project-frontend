@@ -5,7 +5,7 @@ import Card from 'components/common/Card';
 const Board = ({ title, board, ...props }) => {
   return (
     <Card title={title} {...props}>
-      <button style={{ position: 'absolute', top: '35px', right: '20px' }}>더보기</button>
+      <a href='http://43.201.204.106:8080/freeBoard' style={{ position: 'absolute', top: '35px', right: '20px' }}>더보기</a>
       {board.map(item => {
         return <BoardItem key={item.postId} title={item.title} />;
       })}
