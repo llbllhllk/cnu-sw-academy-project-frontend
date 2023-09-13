@@ -31,7 +31,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
 
   return (
     <StyledDiv>
-      <MainBoardTitle>예시</MainBoardTitle>
+      <MainBoardTitle>{restaurant}</MainBoardTitle>
       {data.posts
         .slice(items * (page - 1), items * page)
         .map((post, i) => {

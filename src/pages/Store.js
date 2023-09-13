@@ -1,32 +1,35 @@
-import React, {useState} from "react";
+// import React, {useState} from "react";
 import styled from "styled-components"
 import StoreMainBoard from "components/StoreBoard/StoreMainBoard";
 import StoreList from "components/StoreBoard/StoreList";
 import Button from "components/common/Button";
-import Paging from "components/StoreBoard/Paging";
+// import Paging from "components/StoreBoard/Paging"; 
 import Scroll from "components/StoreBoard/Scroll";
+import Example from "components/common/StoreBoard2/Example";
 
 const Store = ({ StoreTitle }) => {
-  // 상위 컴포넌트에서 클릭 이벤트 처리 함수 정의
-  const [restaurant, setRestaurant] = useState("")
-  const handleRestaurantClick = (restaurant) => {
-    console.log(restaurant)
-    setRestaurant(restaurant);
-  };
+  // const [restaurant, setRestaurant] = useState("55와인포차 본점") // 기본 값이 55와인포차 본점, 기본 값 없애려면 "" 넣자
+  // const handleRestaurantClick = (restaurant) => {
+    // console.log(restaurant) storelist 클릭했을때 뭐 나오는 확인용
+    // setRestaurant(restaurant);
+    // restaurant에 클릭한 storelist 값이 들어오므로, 끌어다가 쓰면 된다 히히
+  // };
 
   return (
     <>
       <StyledList>
         <h2 style={{ textAlign: "center" }}>Store List</h2>
         <StoreList>
-          <Scroll onRestaurantClick={handleRestaurantClick} />
+          <Scroll  /> 
+          {/* onRestaurantClick={handleRestaurantClick} scroll에 다시 넣어야함 */}
         </StoreList>
       </StyledList>
     
     <StyledBoard>
       <StoreMainBoard> 
-        {/* <Example/> */}
-        <Paging restaurant={restaurant}/>
+        <Example/> 
+        {/* 위에 title={restraunt} 속성 넣어줘야함 */}
+        {/* <Paging restaurant={restaurant}/> */}
         {/* 임시로 example로 바꿔놨지만 Paging으로 다시 바꿔야함 */}
         {/* 페이지 네이션 컴포넌트임 */}
       </StoreMainBoard>
