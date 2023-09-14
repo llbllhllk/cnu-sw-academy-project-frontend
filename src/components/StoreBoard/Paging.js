@@ -38,7 +38,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
           return (
             <div key={i}>
               <StoreBoardItem height='90px'>
-                <p>{post.content}</p>
+                <a href={`http://43.201.204.106:8080/boards/${restaurant}?`}>{post.content}</a>
               </StoreBoardItem>
             </div>
           );
