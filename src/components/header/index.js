@@ -1,18 +1,21 @@
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <HeaderContainer>
       <SubContainer>
-        <h1>냠냠</h1>
+      <h1 onClick={()=>{window.location.reload()}}>냠냠</h1>
+      <Link to="/filter">
         <Form>
-          <Input type='text' width='300px' placeholder='검색할 내용을 입력하세요.' />
+          <Input width='300px' placeholder='키워드 검색창으로 이동해요.' />
           <Button type='button' width='72px'>
             검색
           </Button>
         </Form>
+      </Link>
       </SubContainer>
     </HeaderContainer>
   );

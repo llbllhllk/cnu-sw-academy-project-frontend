@@ -5,7 +5,7 @@ import StoreList from "components/StoreBoard/StoreList";
 import Button from "components/common/Button";
 import Paging from "components/StoreBoard/Paging";
 import Scroll from "components/StoreBoard/Scroll";
-import StoreInfo from "components/common/StoreBoard2/StoreInfo";
+import StoreInfo from "components/StoreBoard2/StoreInfo";
 
 const Store = ({ StoreTitle }) => {
   const [restaurant, setRestaurant] = useState("55와인포차 본점");
@@ -23,7 +23,7 @@ const Store = ({ StoreTitle }) => {
     <>
       <StyledList>
         <h2 style={{ textAlign: "center" }}>Store List</h2>
-        <StoreList>
+        <StoreList width="300px" height="630px">
           <Scroll onRestaurantClick={handleRestaurantClick} />
         </StoreList>
       </StyledList>

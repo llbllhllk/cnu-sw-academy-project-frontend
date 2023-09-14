@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'; // Styled Components 라이브러리 불러오기
-import Button from '../Button';
+import Button from 'components/common/Button';
 
 
 // Styled Components를 사용하여 각 요소 스타일링
