@@ -7,8 +7,8 @@ const FilterScroll = ({ food,department,place,jehyu }) => {
   const [data, setData] = useState([]); // 데이터를 저장할 상태
   const fetchAllData = async () => {
     try {
-      const response = await axios.get(`/restaurantConditionalSearch?category=${food}&region=${place}&college=${department}`);
-      const allData = response.data.restaurantList;
+      const response = await axios.get(`http://43.201.204.106:8080/restaurantConditionalSearch?category=${food}&college=${department}`);
+      const allData = response.data;
       setData(allData);
     } catch (error) {
       console.error("데이터를 가져오는 중 오류 발생:", error);

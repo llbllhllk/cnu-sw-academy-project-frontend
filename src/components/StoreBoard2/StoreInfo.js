@@ -66,7 +66,7 @@ const StoreInfo = ({ title }) => {
 
         {isWriting ? (
           // isWriting이 true일 때 ReviewWrite 컴포넌트 렌더링
-          <ReviewWrite height='200px' handleCloseClick={handleCloseClick}/> 
+          <ReviewWrite height='200px' handleCloseClick={handleCloseClick} restaurantName={title}/> 
         ) : (
           // isWriting이 false일 때 기존 컴포넌트 렌더링
           <div style={{ height: "230px", overflowY: "auto" }}>

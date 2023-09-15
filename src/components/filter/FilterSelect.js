@@ -57,9 +57,9 @@ const StoreListContainer = styled.div`
 `;
 
 function FilterSelect() {
-  const [selectedFood, setSelectedFood] = useState(null);
-  const [selectedDepartment, setSelectedDepartment] = useState(null);
-  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [selectedFood, setSelectedFood] = useState("한식");
+  const [selectedDepartment, setSelectedDepartment] = useState("인문대학");
+  const [selectedPlace, setSelectedPlace] = useState("궁동");
   const [selectedJehyu, setSelectedJehyu] = useState(null);
 
   console.log(selectedFood)

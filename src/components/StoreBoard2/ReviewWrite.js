@@ -47,7 +47,7 @@ const StyledButton = styled.div`
   
 `;
 
-function ReviewWrite({ width, height, handleCloseClick }) {
+function ReviewWrite({ width, height, handleCloseClick,restaurantName }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -61,7 +61,7 @@ function ReviewWrite({ width, height, handleCloseClick }) {
 
   const sendDataToServer = () => {
     axios
-      .post('서버의_URL_주소', { title: title, content: content })
+      .post(`http://43.201.204.106:8080/review/${restaurantName}/post`, { rating: title, content: content })
       .then((response) => {
         console.log(response.data);
       })
@@ -77,7 +77,7 @@ function ReviewWrite({ width, height, handleCloseClick }) {
           type="text"
           value={title}
           onChange={handleTitleChange}
-          placeholder="제목을 입력하세요"
+          placeholder="평점을 입력하세요"
         />
       </InputWrapper>
 
