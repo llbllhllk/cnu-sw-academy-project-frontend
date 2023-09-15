@@ -3,6 +3,7 @@ import Button from 'components/common/Button';
 import Card from 'components/common/Card';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import Cookies from 'js-cookie';
 
 const Chat = () => {
   const [msg, setMsg] = useState('');
@@ -38,7 +39,7 @@ const Chat = () => {
 
   const send = useCallback(() => {
     if (msg !== '') {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('accessToken');
       const data = {
         token: JSON.parse(token),
         msg,
