@@ -38,6 +38,9 @@ function InputLogin() {
         Cookies.set('accessToken', response.data.token);
         setIsLoggedIn(true);
         console.log('로그인 성공, 토큰:', response.data.token);
+
+        // 홈 페이지로 이동
+        window.location.href = '/'; // 페이지 이동
       } else {
         console.error('로그인 실패');
       }
@@ -45,7 +48,6 @@ function InputLogin() {
       console.error('오류 발생', error);
     }
   };
-  
 
   return (
     <CenteredContainer>
@@ -84,7 +86,6 @@ function InputLogin() {
     </CenteredContainer>
   );
 }
-
 
 const CenteredContainer = styled.div`
   display: flex;

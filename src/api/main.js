@@ -1,8 +1,7 @@
 import instance from 'api';
 
-
 export const fetchGetFreeBoard = async () => {
-  return (await instance.get('/main/freeboard')).data;
+  return (await instance.get('/main/free')).data;
 };
 
 export const fetchGetPopularBoard = async () => {
