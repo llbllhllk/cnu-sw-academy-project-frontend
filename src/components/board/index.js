@@ -10,7 +10,7 @@ const Board = ({ title, board, buttonLinks, ...props }) => {
         return <BoardItem key={item.postId} title={item.title} />;
       })}
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-        <Button onClick={() => { window.location.href = 'http://localhost:8080/boards/post'}} width={'60px'} height={'33px'}>
+        <Button onClick={() => { window.location.href = 'http://43.201.204.106:8080/boards/post'}} width={'60px'} height={'33px'}>
           글쓰기
         </Button>
       </div>

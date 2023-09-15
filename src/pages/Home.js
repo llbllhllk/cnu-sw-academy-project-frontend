@@ -60,14 +60,14 @@ const Home = () => {
   useEffect(() => {}, []);
   const boardField = [
     {
-      title: '자유게시판',
+      title: '통합 게시판',
       board: board.freeBoard,
-      link : 'http://localhost:8080/freeBoard'
+      link : 'http://43.201.204.106:8080/freeBoard'
     },
     {
       title: 'Hot게시판',
       board: board.popularBoard,
-      link : 'http://localhost:8080/popularBoard'
+      link : 'http://43.201.204.106:8080/popularBoard'
     },
   ];
 

@@ -13,7 +13,7 @@ const StoreInfo = ({ title }) => {
   const [data, setData] = useState([]); // 데이터를 저장할 상태
   const fetchAllData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/boards/${title}?`);
+      const response = await axios.get(`http://43.201.204.106:8080/boards/${title}?`);
       const allData = response.data.posts;
       setData(allData);
     } catch (error) {
@@ -24,7 +24,7 @@ const StoreInfo = ({ title }) => {
   const [infoData, setInfoData] = useState([]);
   const fetchInfoData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/boards/restaurantInfo/${title}`)
+      const response = await axios.get(`http://43.201.204.106:8080/boards/restaurantInfo/${title}`)
       const allData = response.data;
       setInfoData(allData);
     } catch (error) {
@@ -61,7 +61,7 @@ const StoreInfo = ({ title }) => {
         <h2>Review</h2>
         <ButtonWrapper> 
           {/* 버튼 클릭 시 handleWriteClick 호출 */}
-          <Button width='60px' height='25px' onClick={handleWriteClick}>글쓰기</Button>
+          <Button width='70px' height='30px' onClick={handleWriteClick}>글쓰기</Button>
         </ButtonWrapper>
 
         {isWriting ? (
@@ -71,7 +71,7 @@ const StoreInfo = ({ title }) => {
           // isWriting이 false일 때 기존 컴포넌트 렌더링
           <div style={{ height: "230px", overflowY: "auto" }}>
             {data.map((restaurant, index) => (
-              <div key={index} onClick={() => window.open(`http://localhost:8080/boards/${restaurant.posts}?`)}>
+              <div key={index} onClick={() => window.open(`http://43.201.204.106:8080/boards/${restaurant.posts}?`)}>
                 <StoreBoardItem height={'80px'}>
                 <p><StyledP>{restaurant.content}</StyledP></p>
                 {/* href={`http://43.201.204.106:8080/boards/${restaurant.posts}?`} */}
