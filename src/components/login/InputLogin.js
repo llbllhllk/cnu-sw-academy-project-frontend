@@ -1,12 +1,95 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
+import Cookies from 'js-cookie';
+
+function InputLogin() {
+  const [memberId, setMemberId] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // 페이지 로딩 시 쿠키에서 토큰 읽어오기
+    const accessToken = Cookies.get('accessToken');
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // axios interceptors를 사용하여 헤더에 토큰 추가
+  axios.interceptors.request.use((config) => {
+    const accessToken = Cookies.get('accessToken');
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    return config;
+  });
+
+  const handleLogin = async () => {
+    try {
+      const data = { memberId, password };
+      const response = await axios.post('http://43.201.204.106:8080/member/login', data, {
+        withCredentials: true,
+      });
+
+      if (response.data.token) {
+        // 로그인 성공 시 토큰을 쿠키에 저장
+        Cookies.set('accessToken', response.data.token);
+        setIsLoggedIn(true);
+        console.log('로그인 성공, 토큰:', response.data.token);
+      } else {
+        console.error('로그인 실패');
+      }
+    } catch (error) {
+      console.error('오류 발생', error);
+    }
+  };
+  
+
+  return (
+    <CenteredContainer>
+      <Header>냠냠</Header>
+      <LoginContainer>
+        {isLoggedIn ? (
+          console.log("로그인 완료")
+        ) : (
+          <LoginForm>
+            <InputRow>
+              <InputLabel htmlFor="memberId"><StyledP>아이디</StyledP></InputLabel>
+              <InputField
+                type="text"
+                id="memberId"
+                value={memberId}
+                onChange={(e) => setMemberId(e.target.value)}
+              />
+            </InputRow>
+            <InputRow>
+              <InputLabel htmlFor="password"><StyledP>비밀번호</StyledP></InputLabel>
+              <InputField
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </InputRow>
+            <StyledBtn>
+              <Button type="button" width='200px' height='50px' onClick={handleLogin}>
+                로그인
+              </Button>
+            </StyledBtn>
+          </LoginForm>
+        )}
+      </LoginContainer>
+    </CenteredContainer>
+  );
+}
+
 
 const CenteredContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 수정: 세로 중앙 정렬을 위해 justify-content 추가 */
+  justify-content: center;
   align-items: center;
   height: 100vh;
 `;
@@ -68,65 +151,5 @@ const StyledP = styled.p`
   font-size: 20px;
   font-weight: bolder;
 `;
-
-function InputLogin() {
-  const [memberId, setMemberId] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = async () => {
-    try {
-      const data = { memberId, password };
-      const response = await axios.post('http://43.201.204.106:8080/member/login', data, {
-        withCredentials: true,
-      });
-
-      if (response.data.success) {
-        setIsLoggedIn(true);
-      } else {
-        console.error('로그인 실패');
-      }
-    } catch (error) {
-      console.error('오류 발생', error);
-    }
-  };
-
-  return (
-    <CenteredContainer>
-      <Header>냠냠</Header>
-      <LoginContainer>
-        {isLoggedIn ? (
-          console.log("로그인 완료")
-        ) : (
-          <LoginForm>
-            <InputRow>
-              <InputLabel htmlFor="memberId"><StyledP>아이디</StyledP></InputLabel>
-              <InputField
-                type="text"
-                id="memberId"
-                value={memberId}
-                onChange={(e) => setMemberId(e.target.value)}
-              />
-            </InputRow>
-            <InputRow>
-              <InputLabel htmlFor="password"><StyledP>비밀번호</StyledP></InputLabel>
-              <InputField
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </InputRow>
-            <StyledBtn>
-              <Button type="button" width='200px' height='50px' onClick={handleLogin}>
-                로그인
-              </Button>
-            </StyledBtn>
-          </LoginForm>
-        )}
-      </LoginContainer>
-    </CenteredContainer>
-  );
-}
 
 export default InputLogin;
