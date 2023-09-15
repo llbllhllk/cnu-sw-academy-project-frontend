@@ -7,7 +7,7 @@ const Board = ({ title, board, buttonLinks, ...props }) => {
     <Card title={title} {...props}>
       <a href={buttonLinks} style={{ position: 'absolute', top: '35px', right: '20px' }}>더보기</a>
       {board.map(item => {
-        return <BoardItem key={item.postId} title={item.title} />;
+        return <BoardItem key={item.postId} title={item.title}/>;
       })}
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
         <Button onClick={() => { window.location.href = 'http://43.201.204.106:8080/boards/post'}} width={'60px'} height={'33px'}>

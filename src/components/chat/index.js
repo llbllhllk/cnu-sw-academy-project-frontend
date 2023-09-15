@@ -8,9 +8,10 @@ const Chat = () => {
   const [msg, setMsg] = useState('');
   const [name, setName] = useState('');
   const [chatt, setChatt] = useState([]);
+  // const [chkLog, setChkLog] = useState(false);
   const [socketData, setSocketData] = useState();
 
-  const ws = useRef(null);
+  const ws = useRef(null); //webSocket을 담는 변수,
   const textareaRef = useRef();
 
   useEffect(() => {
@@ -29,43 +30,34 @@ const Chat = () => {
       setName(dataSet.name);
       setSocketData(dataSet);
     };
-  }, []);
+  });
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-
-    if (accessToken) {
-      // accessToken이 존재할 때만 WebSocket 연결
-      webSocketLogin();
-    }
+    webSocketLogin();
   }, []);
 
   const send = useCallback(() => {
-    const accessToken = localStorage.getItem('accessToken');
-
-    if (accessToken) {
-      // accessToken이 존재할 때만 메시지 전송
-      if (msg !== '') {
-        const data = {
-          token: JSON.parse(accessToken),
-          msg,
-        };
-        const temp = JSON.stringify(data);
-        if (ws.current.readyState === 0) {
-          ws.current.onopen = () => {
-            ws.current.send(temp);
-            textareaRef.current.focus();
-          };
-        } else {
+    if (msg !== '') {
+      const token = localStorage.getItem('token');
+      const data = {
+        token: JSON.parse(token),
+        msg,
+      }; //전송 데이터(JSON)
+      const temp = JSON.stringify(data);
+      if (ws.current.readyState === 0) {
+        ws.current.onopen = () => {
           ws.current.send(temp);
-        }
+          textareaRef.current.focus();
+        };
       } else {
-        alert('메세지를 입력하세요.');
-        document.getElementById('msg').focus();
-        return;
+        ws.current.send(temp);
       }
-      setMsg('');
+    } else {
+      alert('메세지를 입력하세요.');
+      document.getElementById('msg').focus();
+      return;
     }
+    setMsg('');
   });
 
   return (
