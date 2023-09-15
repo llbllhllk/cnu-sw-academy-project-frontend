@@ -1,5 +1,4 @@
 import { fetchGetFreeBoard, fetchGetPopularBoard } from 'api/main';
-import { fetchGetToken } from 'api/token';
 import Board from 'components/board';
 import Carousel from 'components/carousel';
 import Chat from 'components/chat';
@@ -44,7 +43,6 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchGetToken();
       const [freeBoard, popularBoard] = await Promise.all([
         fetchGetFreeBoard(),
         fetchGetPopularBoard(),
