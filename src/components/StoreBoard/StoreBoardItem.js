@@ -3,6 +3,7 @@
 import styled from 'styled-components';
 
 const StoreBoardItem = ({ width,height,children, ...props }) => {
+
   return (
     <BoardItemStyle width={width} height={height}>
       {children}

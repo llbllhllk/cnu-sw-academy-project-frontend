@@ -1,58 +1,72 @@
-import styled from "styled-components"
-import StoreMainBoard from "components/StoreBoard/StoreMainBoard"; // 6-1, 6-2 큰 게시판
-import StoreList from "components/StoreBoard/StoreList"; //  6-1, 6-2 스토어 리스트
-import Button from "components/common/Button"; // 버튼 임포트
-import Paging from "components/StoreBoard/Paging"; // 페이지 네이션
-import Scroll from "components/StoreBoard/Scroll"; // 무한 스크롤링
-// import Example from "components/common/StoreBoard2/Example";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import StoreMainBoard from "components/StoreBoard/StoreMainBoard";
+import StoreList from "components/StoreBoard/StoreList";
+import Button from "components/common/Button";
+import Paging from "components/StoreBoard/Paging";
+import Scroll from "components/StoreBoard/Scroll";
+import StoreInfo from "components/StoreBoard2/StoreInfo";
 
+const Store = ({ StoreTitle }) => {
+  const [restaurant, setRestaurant] = useState("55와인포차 본점");
+  const handleRestaurantClick = (restaurant) => {
+    console.log(restaurant);
+    setRestaurant(restaurant);
+  };
 
-const Store = ({StoreTitle}) => {
+  const [viewStore, setViewStore] = useState(true);
   
-  return (
-  <>
-    <StyledList>
-      <h2 style={{ textAlign: "center" }}>Store List</h2>
-      <StoreList>
-        <Scroll/> 
-        {/* 무한스크롤 컴포넌트임. 안에 StoreBoardItem을 직접 사용함 */}
-      </StoreList>
-    </StyledList>
-    
-    <StyledBoard>
-      <StoreMainBoard> 
-        {/* <Example/> */}
-        <Paging/>
-        {/* 임시로 example로 바꿔놨지만 Paging으로 다시 바꿔야함 */}
-        {/* 페이지 네이션 컴포넌트임 */}
-      </StoreMainBoard>
-    </StyledBoard>
+  useEffect(() => {
+  }, [viewStore]);
 
-    <StyledButton>
-      <Button width="160px" height="40px">게시판</Button>
-      <Button width="160px" height="40px">식당상세정보</Button>
-    </StyledButton>
-    
-  </>
-  )
+  return (
+    <>
+      <StyledList>
+        <h2 style={{ textAlign: "center" }}>Store List</h2>
+        <StoreList width="300px" height="630px">
+          <Scroll onRestaurantClick={handleRestaurantClick} />
+        </StoreList>
+      </StyledList>
+
+      <StyledBoard>
+        <StoreMainBoard>
+          {viewStore ? (
+              <Paging restaurant={restaurant}/>
+          ) : (
+              <StoreInfo title={restaurant}/>
+          )}
+        </StoreMainBoard>
+      </StyledBoard>
+
+      <StyledButton>
+        {/* 버튼 클릭 시 viewStore 값을 변경합니다. */}
+        <Button width="160px" height="40px" onClick={() => setViewStore(true)}>
+          게시판
+        </Button>
+        <Button width="160px" height="40px" onClick={() => setViewStore(false)}>
+          식당상세정보
+        </Button>
+      </StyledButton>
+    </>
+  );
 };
 
 const StyledList = styled.div`
-  position: absolute; /* 절대 위치 지정 */
-  top: 80px; /* 원하는 수직 위치로 조절 */
-  left: 200px; /* 원하는 수평 위치로 조절 */
-`
+  position: absolute;
+  top: 80px;
+  left: 200px;
+`;
 
 const StyledBoard = styled.div`
-  position: absolute; /* 절대 위치 지정 */
-  top: 130px; /* 원하는 수직 위치로 조절 */
-  left: 600px; /* 원하는 수평 위치로 조절 */
-`
+  position: absolute;
+  top: 130px;
+  left: 600px;
+`;
+
 const StyledButton = styled.div`
-  position: absolute; /* 절대 위치 지정 */
-  top: 80px; /* 원하는 수직 위치로 조절 */
-  left: 600px; /* 원하는 수평 위치로 조절 */
-`
-// StyledList, StyledBoard는 각각 StoreList,StoreMainBoard 위치 조정용이다.
+  position: absolute;
+  top: 80px;
+  left: 600px;
+`;
 
 export default Store;

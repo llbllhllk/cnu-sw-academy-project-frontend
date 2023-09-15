@@ -7,6 +7,7 @@ import Container from 'components/common/Container';
 import Header from 'components/header';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const restaurantData = [
   // 각 슬라이드에 표시할 음식점 데이터를 배열로 정의하세요
@@ -72,7 +73,7 @@ const Home = () => {
       <Container>
         <Header />
         <main>
-          <Carousel data={restaurantData} />
+          <Link to='./store'><Carousel data={restaurantData} /></Link>
           <FeedBox>
             {boardField.map((board, idx) => (
               <Board key={idx} title={board.title} board={board.board} />

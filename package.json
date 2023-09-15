@@ -16,7 +16,7 @@
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.2",
     "react-js-pagination": "^3.0.3",
-    "react-router-dom": "^6.15.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "react-stomp": "^5.1.0",
     "socket.io-client": "^4.7.2",
@@ -58,6 +58,5 @@
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.2"
-  },
-  "proxy": "http://43.201.204.106:8080"
+  }
 }
