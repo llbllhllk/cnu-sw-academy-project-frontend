@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Pagination from 'react-js-pagination';
 import styled from 'styled-components';
 import StoreBoardItem from './StoreBoardItem';
+import Button from 'components/common/Button';
 
 const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
   const [data, setData] = useState([]);
@@ -12,7 +13,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
   useEffect(() => {
     const getClick = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/boards/${restaurant}?`);
+        const response = await axios.get(`http://43.201.204.106:8080/boards/${restaurant}?`);
         setData(response.data);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -32,13 +33,16 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
   return (
     <StyledDiv>
       <MainBoardTitle>{restaurant}</MainBoardTitle>
+      <ButtonWrapper>
+        <Button width='70px' height='30px' onClick={() => { window.location.href = 'http://43.201.204.106:8080/boards/post'}}>글쓰기</Button>
+      </ButtonWrapper>
       {data.posts
         .slice(items * (page - 1), items * page)
         .map((post, i) => {
           return (
             <div key={i}>
               <StoreBoardItem height='90px'>
-                <a href={`http://localhost:8080/boards/post/${post.postId}/detail`}>{post.content}</a>
+                <a href={`http://43.201.204.106:8080/boards/post/${post.postId}/detail`}>{post.content}</a>
               </StoreBoardItem>
             </div>
           );
@@ -55,6 +59,12 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
     </StyledDiv>
   );
 };
+
+const ButtonWrapper = styled.div`
+  position: absolute;
+  top: -5px; /* 조정할 위치(y축)에 맞게 설정하세요 */
+  right: 0; /* 조정할 위치(x축)에 맞게 설정하세요 */
+`;
 
 const PaginationBox = styled.div`
   .pagination {
@@ -103,7 +113,6 @@ const StyledDiv = styled.div`
   position: relative;
   top: -30px;
 `;
-
 const MainBoardTitle = styled.h3`
   position: relative;
   top: -5px;

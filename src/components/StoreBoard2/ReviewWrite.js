@@ -61,7 +61,7 @@ function ReviewWrite({ width, height, handleCloseClick,restaurantName }) {
 
   const sendDataToServer = () => {
     axios
-      .post(`http://localhost:8080/review/${restaurantName}/post`, { rating: title, content: content })
+      .post(`http://43.201.204.106:8080/review/${restaurantName}/post`, { rating: title, content: content })
       .then((response) => {
         console.log(response.data);
       })
