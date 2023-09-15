@@ -12,7 +12,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
   useEffect(() => {
     const getClick = async () => {
       try {
-        const response = await axios.get(`http://43.201.204.106:8080/boards/${restaurant}?`);
+        const response = await axios.get(`http://localhost:8080/boards/${restaurant}?`);
         setData(response.data);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -38,7 +38,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
           return (
             <div key={i}>
               <StoreBoardItem height='90px'>
-                <a href={`http://43.201.204.106:8080/boards/${restaurant}?`}>{post.content}</a>
+                <a href={`http://localhost:8080/boards/post/${post.postId}/detail`}>{post.content}</a>
               </StoreBoardItem>
             </div>
           );

@@ -7,7 +7,7 @@ const Scroll = ({ onRestaurantClick }) => {
   const [data, setData] = useState([]); // 데이터를 저장할 상태
   const fetchAllData = async () => {
     try {
-      const response = await axios.get(`http://43.201.204.106:8080/boards/restaurantList`);
+      const response = await axios.get(`http://localhost:8080/boards/restaurantList`);
       const allData = response.data.restaurantList;
       setData(allData);
     } catch (error) {

@@ -18,6 +18,7 @@ const restaurantData = [
   ],
   // 다른 슬라이드에 대한 데이터도 추가하세요
   // ...
+  
   [
     { name: '2음식점1', rank: 1, category: '주간 맛집' },
     { name: '2음식점2', rank: 2, category: '주간 맛집' },
@@ -61,14 +62,12 @@ const Home = () => {
     {
       title: '자유게시판',
       board: board.freeBoard,
-      link : 'http://43.201.204.106:8080/freeBoard',
-      writeLink : ''
+      link : 'http://localhost:8080/freeBoard'
     },
     {
       title: 'Hot게시판',
       board: board.popularBoard,
-      link : 'http://43.201.204.106:8080/popularBoard',
-      wirteLink : ''
+      link : 'http://localhost:8080/popularBoard'
     },
   ];
 
@@ -80,7 +79,7 @@ const Home = () => {
           <Link to='./store'><Carousel data={restaurantData} /></Link>
           <FeedBox>
             {boardField.map((board, idx) => (
-              <Board key={idx} title={board.title} board={board.board} buttonLinks={board.link} wirteLink={board.writeLink}/>
+              <Board key={idx} title={board.title} board={board.board} buttonLinks={board.link}/>
             ))}
             <Chat />
           </FeedBox>
