@@ -40,8 +40,9 @@ const Chat = () => {
   const send = useCallback(() => {
     if (msg !== '') {
       const token = Cookies.get('accessToken');
+      console.log(token)
       const data = {
-        token: JSON.parse(token),
+        token: token,
         msg,
       }; //전송 데이터(JSON)
       const temp = JSON.stringify(data);
