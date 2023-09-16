@@ -131,9 +131,10 @@ const TextArea = styled.textarea`
   display: block;
   border: 1px solid #d9d9d9;
   border-radius: 14px;
-  height: 100px;
+  height: 70px;
   margin-bottom: 10px;
   outline: none;
+  resize: none;
 `;
 
 export default Chat;

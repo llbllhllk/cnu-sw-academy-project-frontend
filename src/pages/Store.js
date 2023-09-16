@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import StoreMainBoard from "components/StoreBoard/StoreMainBoard";
 import StoreList from "components/StoreBoard/StoreList";
-import Button from "components/common/Button";
 import Paging from "components/StoreBoard/Paging";
 import Scroll from "components/StoreBoard/Scroll";
 import StoreInfo from "components/StoreBoard2/StoreInfo";
@@ -38,15 +37,22 @@ const Store = ({ StoreTitle }) => {
         </StoreMainBoard>
       </StyledBoard>
 
-      <StyledButton>
+      <StyledButtonContainer>
         {/* 버튼 클릭 시 viewStore 값을 변경합니다. */}
-        <Button width="160px" height="40px" onClick={() => setViewStore(true)}>
+        <StyledButton
+          onClick={() => setViewStore(true)}
+          active={viewStore}
+        >
           게시판
-        </Button>
-        <Button width="160px" height="40px" onClick={() => setViewStore(false)}>
+        </StyledButton>
+        <StyledButton
+          onClick={() => setViewStore(false)}
+          active={!viewStore}
+          marginLeft="5px" // 여기에 마진을 추가합니다.
+        >
           식당상세정보
-        </Button>
-      </StyledButton>
+        </StyledButton>
+      </StyledButtonContainer>
     </>
   );
 };
@@ -63,10 +69,27 @@ const StyledBoard = styled.div`
   left: 600px;
 `;
 
-const StyledButton = styled.div`
+const StyledButtonContainer = styled.div`
   position: absolute;
   top: 80px;
   left: 600px;
+`;
+
+const StyledButton = styled.button`
+  border-radius: 14px;
+  padding: 4px 12px;
+  background-color: ${({ active }) => (active ? "#ff9704" : "silver")};
+  color: #fff;
+  font-weight: 700;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease-out;
+  width: 160px;
+  height: 40px;
+  margin-left: ${({ marginLeft }) => marginLeft || "0"}; // 마진을 추가합니다.
+
+  &:hover {
+    background-color: #ff9704;
+    box-shadow: 3px -3px 0px 0px rgba(255, 255, 255, 0.45) inset;
+  }
 `;
 
 export default Store;
