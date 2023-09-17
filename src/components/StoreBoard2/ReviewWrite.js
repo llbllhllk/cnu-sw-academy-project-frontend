@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import styled from 'styled-components'; // Styled Components 라이브러리 불러오기
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -19,19 +19,16 @@ const ReviewWrite = ({ width, height, handleCloseClick, restaurantName, color })
   const sendDataToServer = () => {
     console.log(rating)
     console.log(content)
-    setRating(0)
-    setContent('');
-    //위는 임시 로직
-    // axios
-    //   .post(`http://43.201.204.106:8080/review/${restaurantName}/post`, { rating: rating, content: content})
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     setRating(0)
-    //     setContent('');
-    //   })
-    //   .catch((error) => {
-    //     console.error('오류 발생: ', error);
-    //   });
+    axios
+      .post(`http://43.201.204.106:8080/review/${restaurantName}/post`, { rating: rating, content: content})
+      .then((response) => {
+        console.log(response.data);
+        setRating(0)
+        setContent('');
+      })
+      .catch((error) => {
+        console.error('오류 발생: ', error);
+      });
 
   };
 

@@ -70,7 +70,7 @@ const StyledBoard = styled.div`
 `;
 
 const StyledButtonContainer = styled.div`
-  position: absolute;
+  position: relative;
   top: 80px;
   left: 600px;
 `;
