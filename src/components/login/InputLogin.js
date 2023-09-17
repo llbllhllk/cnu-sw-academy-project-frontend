@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from 'components/common/Button';
 import Cookies from 'js-cookie';
 
-function InputLogin() {
+function SignUp() {
   const [memberId, setMemberId] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,7 +58,7 @@ function InputLogin() {
         ) : (
           <LoginForm>
             <InputRow>
-              <InputLabel htmlFor="memberId"><StyledP>아이디</StyledP></InputLabel>
+              <InputLabel htmlFor="memberId"><StyledP>이메일</StyledP></InputLabel>
               <InputField
                 type="text"
                 id="memberId"
@@ -83,6 +83,8 @@ function InputLogin() {
           </LoginForm>
         )}
       </LoginContainer>
+      <button>회원가입</button>
+      <button>비밀번호 찾기</button>
     </CenteredContainer>
   );
 }
@@ -145,7 +147,7 @@ const InputField = styled.input`
 `;
 
 const StyledBtn = styled.div`
-  margin-top: 50px;
+  margin-top:20px;
 `;
 
 const StyledP = styled.p`
@@ -153,4 +155,4 @@ const StyledP = styled.p`
   font-weight: bolder;
 `;
 
-export default InputLogin;
+export default SignUp;
