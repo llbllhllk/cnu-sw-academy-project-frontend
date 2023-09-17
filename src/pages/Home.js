@@ -60,12 +60,12 @@ const Home = () => {
     {
       title: '통합 게시판',
       board: board.freeBoard,
-      link : 'http://43.201.204.106:8080/freeBoard'
+      link: 'http://43.201.204.106:8080/freeBoard',
     },
     {
       title: 'Hot게시판',
       board: board.popularBoard,
-      link : 'http://43.201.204.106:8080/popularBoard'
+      link: 'http://43.201.204.106:8080/popularBoard',
     },
   ];
 
@@ -77,7 +77,7 @@ const Home = () => {
           <Link to='./store'><Carousel data={restaurantData} /></Link>
           <FeedBox>
             {boardField.map((board, idx) => (
-              <Board key={idx} title={board.title} board={board.board} buttonLinks={board.link}/>
+              <Board key={idx} title={board.title} board={board.board} buttonLinks={board.link} hideWriteButton={idx === 1} />
             ))}
             <Chat />
           </FeedBox>

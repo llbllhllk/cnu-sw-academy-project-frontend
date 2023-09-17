@@ -37,47 +37,53 @@ const StoreInfo = ({ title }) => {
     fetchInfoData();
   }, [title]);
 
-  // 추가된 부분: isWriting 상태와 그 핸들러
-  const [isWriting, setIsWriting] = useState(false);
+  const [isWriting, setIsWriting] = useState(false); // "글쓰기" 버튼 클릭 여부 상태 추가
 
-  const handleWriteClick = () => setIsWriting(true);
-  const handleCloseClick = () => setIsWriting(false);
-  
+  const handleWriteClick = () => setIsWriting(true); // "글쓰기" 버튼 클릭 시 isWriting 상태를 true로 설정
+
   return (
     <>
-    <Styledh1>{title}</Styledh1>
-    <StoreBoardItem width='400px' height='200px'>
-      <StarIcon />
-      <LocationOnIcon />
-      {/* 별점 */}
-      <p>{infoData.address}</p>
-      <Call />
-      {/* 주소 */}
-      <p>{infoData.phone}</p>
-      {/* 전화번호 */}
+      <Styledh1>{title}</Styledh1>
+      <StoreBoardItem width='400px' height='200px'>
+        <StarIcon />
+        <LocationOnIcon />
+        {/* 별점 */}
+        <p>{infoData.address}</p>
+        <Call />
+        {/* 주소 */}
+        <p>{infoData.phone}</p>
+        {/* 전화번호 */}
       </StoreBoardItem>
 
       <StyledDiv>
         <h2>Review</h2>
-        <ButtonWrapper> 
-          {/* 버튼 클릭 시 handleWriteClick 호출 */}
-          <Button width='70px' height='30px' onClick={handleWriteClick}>글쓰기</Button>
-        </ButtonWrapper>
+        {!isWriting && (
+          <ButtonWrapper>
+            {/* 버튼 클릭 시 handleWriteClick 호출 */}
+            <Button width='70px' height='30px' onClick={handleWriteClick}>
+              글쓰기
+            </Button>
+          </ButtonWrapper>
+        )}
 
         {isWriting ? (
           // isWriting이 true일 때 ReviewWrite 컴포넌트 렌더링
-          <ReviewWrite height='200px' handleCloseClick={handleCloseClick} restaurantName={title}/> 
+          <ReviewWrite
+            height='200px'
+            handleCloseClick={() => setIsWriting(false)} // ReviewWrite에서 "닫기" 버튼 클릭 시 isWriting 상태 변경
+            restaurantName={title}
+          />
         ) : (
           // isWriting이 false일 때 기존 컴포넌트 렌더링
           <div style={{ height: "230px", overflowY: "auto" }}>
             {data.map((restaurant, index) => (
               <div key={index} onClick={() => window.open(`http://43.201.204.106:8080/boards/${restaurant.posts}?`)}>
                 <StoreBoardItem height={'80px'}>
-                <p><StyledP>{restaurant.content}</StyledP></p>
-                {/* href={`http://43.201.204.106:8080/boards/${restaurant.posts}?`} */}
+                  <p><StyledP>{restaurant.content}</StyledP></p>
+                  {/* href={`http://43.201.204.106:8080/boards/${restaurant.posts}?`} */}
                 </StoreBoardItem>
               </div>
-              // storeBoardItem에 onclik이 적용 안돼서, div태그에 key값을 주고 onclick을 넣음
+              // storeBoardItem에 onclick이 적용 안돼서, div 태그에 key 값을 주고 onclick을 넣음
             ))}
           </div>  
         )}
@@ -107,4 +113,5 @@ const StyledP = styled.a`
   font-size : 30px;
   text-align : center;
 `
+
 export default StoreInfo;

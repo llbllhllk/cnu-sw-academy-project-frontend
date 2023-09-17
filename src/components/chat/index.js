@@ -3,14 +3,16 @@ import Button from 'components/common/Button';
 import Card from 'components/common/Card';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import Cookies from 'js-cookie';
 
 const Chat = () => {
   const [msg, setMsg] = useState('');
   const [name, setName] = useState('');
   const [chatt, setChatt] = useState([]);
+  // const [chkLog, setChkLog] = useState(false);
   const [socketData, setSocketData] = useState();
 
-  const ws = useRef(null);
+  const ws = useRef(null); //webSocket을 담는 변수,
   const textareaRef = useRef();
 
   useEffect(() => {
@@ -29,43 +31,35 @@ const Chat = () => {
       setName(dataSet.name);
       setSocketData(dataSet);
     };
-  }, []);
+  });
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-
-    if (accessToken) {
-      // accessToken이 존재할 때만 WebSocket 연결
-      webSocketLogin();
-    }
+    webSocketLogin();
   }, []);
 
   const send = useCallback(() => {
-    const accessToken = localStorage.getItem('accessToken');
-
-    if (accessToken) {
-      // accessToken이 존재할 때만 메시지 전송
-      if (msg !== '') {
-        const data = {
-          token: JSON.parse(accessToken),
-          msg,
-        };
-        const temp = JSON.stringify(data);
-        if (ws.current.readyState === 0) {
-          ws.current.onopen = () => {
-            ws.current.send(temp);
-            textareaRef.current.focus();
-          };
-        } else {
+    if (msg !== '') {
+      const token = Cookies.get('accessToken');
+      console.log(token)
+      const data = {
+        token: token,
+        msg,
+      }; //전송 데이터(JSON)
+      const temp = JSON.stringify(data);
+      if (ws.current.readyState === 0) {
+        ws.current.onopen = () => {
           ws.current.send(temp);
-        }
+          textareaRef.current.focus();
+        };
       } else {
-        alert('메세지를 입력하세요.');
-        document.getElementById('msg').focus();
-        return;
+        ws.current.send(temp);
       }
-      setMsg('');
+    } else {
+      alert('메세지를 입력하세요.');
+      document.getElementById('msg').focus();
+      return;
     }
+    setMsg('');
   });
 
   return (
@@ -137,9 +131,10 @@ const TextArea = styled.textarea`
   display: block;
   border: 1px solid #d9d9d9;
   border-radius: 14px;
-  height: 100px;
+  height: 70px;
   margin-bottom: 10px;
   outline: none;
+  resize: none;
 `;
 
 export default Chat;
