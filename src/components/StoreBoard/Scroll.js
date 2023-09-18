@@ -8,6 +8,7 @@ const Scroll = ({ onRestaurantClick }) => {
   const fetchAllData = async () => {
     try {
       const response = await axios.get(`http://43.201.204.106:8080/boards/restaurantList`);
+      console.log(response)
       const allData = response.data.restaurantList;
       setData(allData);
     } catch (error) {
