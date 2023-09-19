@@ -36,7 +36,7 @@ const StoreInfo = ({ title }) => {
     fetchAllData();
     fetchInfoData();
   }, [title]);
-
+  console.log(infoData)
   const [isWriting, setIsWriting] = useState(false); // "글쓰기" 버튼 클릭 여부 상태 추가
 
   const handleWriteClick = () => setIsWriting(true); // "글쓰기" 버튼 클릭 시 isWriting 상태를 true로 설정
@@ -77,10 +77,11 @@ const StoreInfo = ({ title }) => {
           // isWriting이 false일 때 기존 컴포넌트 렌더링
           <div style={{ height: "230px", overflowY: "auto" }}>
             {data.map((restaurant, index) => (
-              <div key={index} onClick={() => window.open(`http://43.201.204.106:8080/boards/${restaurant.posts}?`)}>
-                <StoreBoardItem height={'80px'}>
-                  <p><StyledP>{restaurant.content}</StyledP></p>
-                  {/* href={`http://43.201.204.106:8080/boards/${restaurant.posts}?`} */}
+              <div>
+                <StoreBoardItem  key={index} height={'80px'}>
+                <p>{restaurant.content}</p>
+                <p>{`좋아요 : ${restaurant.postLikeCount}`}  </p>
+                <p>{`${restaurant.createdAt[0]}-${restaurant.createdAt[1]}-${restaurant.createdAt[2]} ${restaurant.createdAt[3]}시 ${restaurant.createdAt[4]}분 ` }</p>
                 </StoreBoardItem>
               </div>
               // storeBoardItem에 onclick이 적용 안돼서, div 태그에 key 값을 주고 onclick을 넣음
@@ -108,10 +109,4 @@ const ButtonWrapper = styled.div`
   top: 0;
   right: 0;
 `
-const StyledP = styled.a`
-  background-color : blue;
-  font-size : 30px;
-  text-align : center;
-`
-
 export default StoreInfo;
