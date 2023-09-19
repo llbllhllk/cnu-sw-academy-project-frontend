@@ -4,7 +4,7 @@ import FilterScroll from "components/filter/FilterScroll";
 import StoreList from "components/StoreBoard/StoreList";
 
 const food = ["한식", "양식", "일식", "중식", "분식", "패스트푸드", "기타", "", ""];
-const department = ["인문대학", "사회과학대학", "자연과학대학", "자연대", "경상대학", "공과대학", "농업생명과학대학", "약학대학", "의과대학"];
+const department = ["인문대학", "사회과학대학", "자연과학대학", "경상대학", "공과대학", "농업생명과학대학", "약학대학", "의과대학",""];
 const place = ["궁동", "죽동", "봉명동", "어은동", "장대동", "", "", "",];
 
 function FilterSelect() {
