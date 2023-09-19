@@ -9,9 +9,9 @@ const place = ["궁동", "죽동", "봉명동", "어은동", "장대동", "", ""
 const jehyu = ["선택함", "선택안함", "", "", "", "", "", "",];
 
 function FilterSelect() {
-  const [selectedFood, setSelectedFood] = useState("한식");
-  const [selectedDepartment, setSelectedDepartment] = useState("인문대학");
-  const [selectedPlace, setSelectedPlace] = useState("궁동");
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedJehyu, setSelectedJehyu] = useState(null);
 
   console.log(selectedFood)

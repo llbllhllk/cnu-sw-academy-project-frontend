@@ -7,7 +7,15 @@ import Header from 'components/header';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
+// useEffect(()=>{
+//   const restaurantData = async () => {
+//     await axios.post('')
+
+//   }
+
+// },[])
 const restaurantData = [
   // 각 슬라이드에 표시할 음식점 데이터를 배열로 정의하세요
   [
