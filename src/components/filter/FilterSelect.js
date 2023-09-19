@@ -6,18 +6,15 @@ import StoreList from "components/StoreBoard/StoreList";
 const food = ["한식", "양식", "일식", "중식", "분식", "패스트푸드", "기타", "", ""];
 const department = ["인문대학", "사회과학대학", "자연과학대학", "자연대", "경상대학", "공과대학", "농업생명과학대학", "약학대학", "의과대학"];
 const place = ["궁동", "죽동", "봉명동", "어은동", "장대동", "", "", "",];
-const jehyu = ["선택함", "선택안함", "", "", "", "", "", "",];
 
 function FilterSelect() {
   const [selectedFood, setSelectedFood] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [selectedJehyu, setSelectedJehyu] = useState(null);
 
   console.log(selectedFood)
   console.log(selectedDepartment)
   console.log(selectedPlace)
-  console.log(selectedJehyu)
 
   return (
     <div>
@@ -28,7 +25,6 @@ function FilterSelect() {
               <th>음식 선택</th>
               <th>학과 선택</th>
               <th>지역 선택</th>
-              <th>제휴 선택</th>
             </tr>
           </thead>
 
@@ -53,12 +49,6 @@ function FilterSelect() {
                 >
                   {place[index]}
                 </td>
-                <td
-                  onClick={jehyu[index] ? () => setSelectedJehyu(jehyu[index]) : null}
-                  style={{ backgroundColor: selectedJehyu === jehyu[index] ? '#ff9704' : null }}
-                >
-                  {jehyu[index]}
-                </td>
               </tr>)
             ))}
           </tbody>
@@ -66,8 +56,8 @@ function FilterSelect() {
       </TableContainer>
 
       <StoreListContainer>
-        <StoreList width='400px' height='630px'>
-          <FilterScroll food={selectedFood} department={selectedDepartment} place={selectedPlace} jehyu={selectedJehyu} />
+        <StoreList width='400px' height='600px'>
+          <FilterScroll food={selectedFood} department={selectedDepartment} place={selectedPlace} />
         </StoreList>
       </StoreListContainer>
     </div>

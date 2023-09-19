@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from 'components/common/Button';
 import Cookies from 'js-cookie';
 
-function SignUp() {
+function InputLogin() {
   const [memberId, setMemberId] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -155,4 +155,4 @@ const StyledP = styled.p`
   font-weight: bolder;
 `;
 
-export default SignUp;
+export default InputLogin;

@@ -73,10 +73,15 @@ const ButtonWrapper = styled.div`
 
 const PaginationBox = styled.div`
   .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 525px/* <StoreBoardItem>이 4개일 때의 y축 위치 */; /* 조정할 위치(y축)에 맞게 설정하세요 */
+  left: 50%;
+  transform: translateX(-50%);
+}
   ul {
     list-style: none;
     padding: 0;

@@ -1,35 +1,76 @@
 import {useState} from 'react'
+import axios from 'axios';
+import styled from 'styled-components';
+import Button from 'components/common/Button';
+
+
 const SignUp = () => {
-  const [email, setEmail] = useState('');  // 이메일
   const [userId, setUserId] = useState(''); // 아이디
   const [password, setPassword] = useState('') // 비밀번호
   const [password2 ,setPassword2] = useState('') // 비밀번호 확인
   const [college, setCollege] = useState('') // 단과대학 선택
+  const [email, setEmail] = useState('');  // 이메일
   const [authCode, setAuthCode] = useState('') // 인증번호 
-  const [passwordAccord, setPasswordAccord] = useState(false); // 비밀번호 확인
+  const [passwordAccord, setPasswordAccord] = useState(''); // 최종 비밀번호임.
   
-  const Accord = () => {
-      password === password2 ?
-      passwordAccord(true) : alert("일치하지않아용")  
-
+  const all = {
+    email: email,
+    memberId: userId,
+    password : password,
+    password2 : password2,
+    college : college,
+    authCode : authCode
   }
+
+  console.log(all);
+
+  const handleEmailAccord = async (e) => {
+    e.preventDefault()
+    const response = await axios.post('http://43.201.204.106:8080/mailConfirm ',{email:email})
+    try{
+      console.log(response.data)
+      console.log(response.data.success)
+      response.data.success ? alert("인증번호가 발송되었습니다") : alert("인증번호 전송이 실패했습니다. 다시 시도해주세요.");   
+    }
+    catch(error){
+      alert("인증번호 전송이 실패했습니다. 다시 시도하렴 ")
+    }
+  } // 이메일 인증 보내는 버튼 
+
+  const handleAuthCodeAccord = async (e) => {
+    e.preventDefault()
+    const response = await axios.post('http://43.201.204.106:8080/emailCheck',{email:email, authCode:authCode})
+    try{
+      console.log(response.data)
+      console.log(response.data.success)
+      response.data.success ? alert("인증이 성공했습니다") : alert("인증이 실패했어요. 다시 시도해주세요.");   
+    }
+    catch(error){
+      alert("다시 시도해줘 ")
+    }
+  } // 인증번호 확인 버튼 
+
+  const handlePasswordCheck = () => {
+    if (password === password2){
+      setPasswordAccord(password) // 일치하면 setPasswordAccord에 password를 저장. 
+      //최종적으로 passwordAccord를 회원가입에 보낼거임.
+      alert("비밀번호가 일치해요")
+    }
+    else{
+      alert("비밀번호가 일치하지않는다")
+    }
+  }
+  console.log(passwordAccord)
+  // 비밀번호가 같아야 그 비밀번호를 PasswordAccord에 저장해서, 최종적으로 보낸다.
   return (
     
   <div>
       <h1>회원가입</h1>
+      <LoginContainer>
       <form>
         <div>
-          <label>이메일:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}           
-            required
-          />
-        </div>
-        <div>
           <label>아이디:</label>
-          <input
+          <InputField
             type="text"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}           
@@ -38,7 +79,7 @@ const SignUp = () => {
         </div>
         <div>
           <label>비밀번호</label>
-          <input
+          <InputField
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}           
@@ -47,17 +88,17 @@ const SignUp = () => {
         </div>
         <div>
           <label>비밀번호 확인</label>
-          <input
+          <InputField
             type="password"
             value={password2}
             onChange={(e) => setPassword2(e.target.value)}           
             required
           />
-          <button>비밀번호 확인</button>
-        </div>
+          <Button width='70px' height='30px' onClick={handlePasswordCheck}>비밀번호 확인</Button>
+        </div>  
         <div>
           <label>단과대학 선택</label>
-          <input
+          <InputField
             type="text"
             value={college}
             onChange={(e) => setCollege(e.target.value)}           
@@ -65,31 +106,59 @@ const SignUp = () => {
           />
         </div>
         <div>
-          <label>단과대학 선택</label>
-          <input
-            type="text"
-            value={college}
-            onChange={(e) => setCollege(e.target.value)}           
+          <label>이메일:</label>
+          <InputField
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}           
             required
           />
+          <Button width='70px' height='30px' onClick={handleEmailAccord}>인증번호 보내기</Button>
         </div>
         <div>
           <label>인증번호 인증</label>
-          <input
+          <InputField
             type="text"
             value={authCode}
             onChange={(e) => setAuthCode(e.target.value)}           
             required
           />
-          <button>인증번호 확인</button>
+          <Button width='70px' height='30px' onClick={handleAuthCodeAccord}>인증번호 확인</Button>
         </div>
-
-        <button type='submit'>가입하기</button>
+        <Button width='70px' height='30px' type='submit'>가입하기</Button>
       </form>
+      </LoginContainer>
   </div>)
 }
 
+
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 14px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 600px;
+  height: 500px;
+`;
+
+const InputField = styled.input`
+  width: 400px;
+  height: 60px;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #d9d9d9;
+  border-radius: 7px;
+  font-weight: border;
+  font-size: 20px;
+`;
+
 export default SignUp;
+
+
 // import React, { useState } from 'react';
 
 // function App() {
