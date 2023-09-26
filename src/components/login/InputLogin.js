@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
 
 function InputLogin() {
   const [memberId, setMemberId] = useState('');
@@ -39,7 +40,8 @@ function InputLogin() {
         setIsLoggedIn(true);
         console.log('로그인 성공, 토큰:', response.data.token);
 
-        // 홈 페이지로 이동
+        // <Link to='/'></Link>
+        // // 홈 페이지로 이동
         window.location.href = '/'; // 페이지 이동
       } else {
         console.error('로그인 실패');
@@ -83,8 +85,11 @@ function InputLogin() {
           </LoginForm>
         )}
       </LoginContainer>
-      <button>회원가입</button>
-      <button>비밀번호 찾기</button>
+      
+      <StyledBtn1>
+        <Link to='/signup'><button>회원가입</button></Link>
+      </StyledBtn1>
+      {/* <button>비밀번호 찾기</button> */}
     </CenteredContainer>
   );
 }
@@ -154,5 +159,10 @@ const StyledP = styled.p`
   font-size: 20px;
   font-weight: bolder;
 `;
+
+const StyledBtn1 = styled.div`
+position: relative; /* 'realtive' 대신 'relative'로 수정합니다. */
+top: -60px;
+`
 
 export default InputLogin;

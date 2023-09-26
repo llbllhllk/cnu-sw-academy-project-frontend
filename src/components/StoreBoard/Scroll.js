@@ -28,19 +28,23 @@ const Scroll = ({ onRestaurantClick }) => {
     <div style={{ height: "550px", overflowY: "auto" }}>
       <ul>
         {data.map((restaurant, index) => (
-          <StoreBoardItem key={index} height={'80px'}>
+          <StyleDiv  key={index} onClick={() => onClickHandler(restaurant)} >
+          <StoreBoardItem height={'80px'}>
             {/* 클릭 시 onClickHandler 호출 및 restaurant 전달 */}
-            <StyleP onClick={() => onClickHandler(restaurant)}>{restaurant}</StyleP>
+            <p>{restaurant}</p>
           </StoreBoardItem>
+          </StyleDiv>
         ))}
       </ul>
     </div>
   );
 };
 
-const StyleP = styled.p`
-  width : 250px;
-  height: 80px;
-  text-align : center;
+const StyleDiv = styled.div`
+  &:hover {
+    background-color: #ff9704;
+    border-radius : 7px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease-out;
+  }
 `
 export default Scroll;

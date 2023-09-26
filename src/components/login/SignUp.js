@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [userId, setUserId] = useState(''); // 아이디
@@ -44,7 +45,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://43.201.204.106:8080/mailConfirm',
+        'http://43.201.204.106:8080/join/mailConfirm',
         { email: email }
       );
       if (response.data.success) {
@@ -91,9 +92,21 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (passwordAccord) {
-      // passwordAccord가 true일 때만 회원가입 로직을 실행
-      // 여기에 실제 회원가입 API 호출 및 처리 로직을 추가해야 합니다.
-      alert('회원가입 완료');
+      const finalSignUp = async() => {
+          const response = await axios.post('http://43.201.204.106:8080/member/join',formData)
+        try{
+          if (response.data.message === "회원가입 성공") {
+            alert('회원가입에 성공했습니다');
+          } else {
+            alert('회원가입에 실패했어요. 다시 시도해주세요.');
+          }
+        }
+        catch(error){
+          alert("다시 시도해줘")
+          
+        }
+      }
+    finalSignUp()
     } else {
       alert('비밀번호를 확인하세요');
     }
@@ -101,49 +114,49 @@ const SignUp = () => {
 
   return (
     <div>
-      <h1>회원가입</h1>
       <LoginContainer>
+        <StyledH1>회원가입</StyledH1>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>아이디:</label>
+          <FormGroup>
+            <Label>아이디</Label>
             <InputField
               type="text"
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
               required
             />
-          </div>
-          <div>
-            <label>비밀번호:</label>
+          </FormGroup>
+          <FormGroup>
+            <Label>비밀번호</Label>
             <InputField
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div>
-            <label>비밀번호 확인:</label>
+          </FormGroup>
+          <FormGroup>
+            <Label>비밀번호 확인</Label>
             <InputField
               type="password"
               value={password2}
               onChange={(e) => setPassword2(e.target.value)}
               required
             />
-            <Button
-              width="70px"
-              height="30px"
-              onClick={handlePasswordCheck}
-            >
-              비밀번호 확인
-            </Button>
-          </div>
-          <div>
+          </FormGroup>
+          <ConfirmButton
+            width="50px"
+            height="30px"
+            onClick={handlePasswordCheck}
+          >
+            확인
+          </ConfirmButton>
+          <FormGroup>
+            <Label>단과대학 선택</Label>
             <DropdownContainer>
-              <div onClick={toggleDropdown}>
-                <div>단과대학 선택</div>
-                <DivField>{selectedOption}</DivField>
-              </div>
+              <DropdownField onClick={toggleDropdown}>
+                <div>{selectedOption || '선택'}</div>
+              </DropdownField>
               {isOpen && (
                 <DropdownList>
                   <DropdownItem onClick={() => handleOptionSelect('인문대학')}>
@@ -173,47 +186,56 @@ const SignUp = () => {
                 </DropdownList>
               )}
             </DropdownContainer>
-          </div>
-          <div>
-            <label>이메일:</label>
+          </FormGroup>
+          <FormGroup>
+            <Label>이메일</Label>
             <InputField
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <Button
-              width="70px"
-              height="30px"
-              onClick={handleEmailAccord}
-            >
-              인증번호 보내기
-            </Button>
-          </div>
-          <div>
-            <label>인증번호 인증:</label>
+          </FormGroup>
+          <SendButton
+            width="50px"
+            height="30px"
+            onClick={handleEmailAccord}
+          >
+            전송
+          </SendButton>
+          <FormGroup>
+            <Label>인증번호 인증</Label>
             <InputField
               type="text"
               value={authCode}
               onChange={(e) => setAuthCode(e.target.value)}
               required
             />
-            <Button
-              width="70px"
-              height="30px"
-              onClick={handleAuthCodeAccord}
-            >
-              인증번호 확인
-            </Button>
-          </div>
-          <Button width="70px" height="30px" type="submit">
+          </FormGroup>
+          <AuthButton
+            width="50px"
+            height="30px"
+            onClick={handleAuthCodeAccord}
+          >
+            확인
+          </AuthButton>
+          <SubmitButton width="330px" height="40px" type="submit">
             가입하기
-          </Button>
+          </SubmitButton>
         </form>
+        
+        <Link to="/login">
+        <BackButton width ="50px" height= "40px">닫기</BackButton>
+        </Link>
       </LoginContainer>
     </div>
   );
 };
+
+const StyledH1 = styled.h1`
+  position: relative;
+  top: -30px;
+`
 
 const LoginContainer = styled.div`
   display: flex;
@@ -222,35 +244,49 @@ const LoginContainer = styled.div`
   border: 1px solid #d9d9d9;
   border-radius: 14px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height : 500px;
+  padding: 20px;
+  justify-content: center; /* 화면 가운데 정렬을 위해 추가 */
+  margin: 100px auto 0 auto; /* 위로 50px만 내려오도록 설정 */
+`;
+
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+  margin-right: 10px;
+  width: 150px;
+  text-align : left;
+
 `;
 
 const InputField = styled.input`
-  width: 400px;
-  height: 60px;
+  width: 100%;
+  height: 40px;
   padding: 5px;
-  margin: 5px;
   border: 1px solid #d9d9d9;
   border-radius: 7px;
-  font-weight: border;
-  font-size: 20px;
-`;
-
-const DivField = styled.div`
-  width: 400px;
-  height: 60px;
-  padding: 5px;
-  margin: 5px;
-  border: 1px solid #d9d9d9;
-  border-radius: 7px;
-  font-weight: border;
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 const DropdownContainer = styled.div`
   position: relative;
-  display: inline-block;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #d9d9d9;
+  border-radius: 7px;
+  font-size: 16px;
+`;
+
+const DropdownField = styled.div`
+  text-align : center;
 `;
 
 const DropdownList = styled.div`
@@ -270,6 +306,36 @@ const DropdownItem = styled.div`
   &:hover {
     background-color: #f0f0f0;
   }
+`;
+
+const ConfirmButton = styled(Button)`
+  position: absolute;
+  top: 280px; /* 상단 위치 조정 */
+  left: 900px; /* 좌측 위치 조정 */
+`;
+
+const SendButton = styled(Button)`
+  position: absolute;
+  top: 430px; /* 상단 위치 조정 */
+  left: 900px; /* 좌측 위치 조정 */
+`;
+
+const AuthButton = styled(Button)`
+  position: absolute;
+  top: 480px; /* 상단 위치 조정 */
+  left: 900px; /* 좌측 위치 조정 */
+`;
+
+const SubmitButton = styled(Button)`
+  position: absolute;
+  top: 540px; /* 상단 위치 조정 */
+  left: 550px; /* 좌측 위치 조정 */
+`;
+
+const BackButton = styled(Button)`
+  position: absolute;
+  top: 540px; /* 상단 위치 조정 */
+  left: 900px; /* 좌측 위치 조정 */
 `;
 
 export default SignUp;
