@@ -40,9 +40,14 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
         .slice(items * (page - 1), items * page)
         .map((post, i) => {
           return (
-            <div key={i}>
+            <div key={i} onClick={() => window.location.href=`http://43.201.204.106:8080/boards/post/${post.postId}/detail`}>
               <StoreBoardItem height='90px'>
-                <a href={`http://43.201.204.106:8080/boards/post/${post.postId}/detail`}>{post.content}</a>
+                {console.log(post)}
+                <TestDiv>
+                <p>{post.title}</p>
+                <p>{`좋아요 : ${post.postLikeCount}`}  </p>
+                <p>{`${post.createdAt[0]}-${post.createdAt[1]}-${post.createdAt[2]} ${post.createdAt[3]}시 ${post.createdAt[4]}분 ` }</p>
+                </TestDiv>
               </StoreBoardItem>
             </div>
           );
@@ -68,10 +73,15 @@ const ButtonWrapper = styled.div`
 
 const PaginationBox = styled.div`
   .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 525px/* <StoreBoardItem>이 4개일 때의 y축 위치 */; /* 조정할 위치(y축)에 맞게 설정하세요 */
+  left: 50%;
+  transform: translateX(-50%);
+}
   ul {
     list-style: none;
     padding: 0;
@@ -118,4 +128,7 @@ const MainBoardTitle = styled.h3`
   top: -5px;
 `;
 
+const TestDiv = styled.div`
+  textalign : center;
+`
 export default Paging;

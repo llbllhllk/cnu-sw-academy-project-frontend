@@ -6,7 +6,7 @@ import Paging from "components/StoreBoard/Paging";
 import Scroll from "components/StoreBoard/Scroll";
 import StoreInfo from "components/StoreBoard2/StoreInfo";
 
-const Store = ({ StoreTitle }) => {
+const Store = () => {
   const [restaurant, setRestaurant] = useState("55와인포차 본점");
   const handleRestaurantClick = (restaurant) => {
     console.log(restaurant);
@@ -70,7 +70,7 @@ const StyledBoard = styled.div`
 `;
 
 const StyledButtonContainer = styled.div`
-  position: relative;
+  position: absolute;
   top: 80px;
   left: 600px;
 `;
