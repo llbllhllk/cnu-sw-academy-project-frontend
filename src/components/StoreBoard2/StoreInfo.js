@@ -60,7 +60,7 @@ const StoreInfo = ({ title }) => {
         {!isWriting && (
           <ButtonWrapper>
             {/* 버튼 클릭 시 handleWriteClick 호출 */}
-            <Button width='70px' height='30px' onClick={handleWriteClick}>
+            <Button width='70px' height='35px' onClick={handleWriteClick}>
               글쓰기
             </Button>
           </ButtonWrapper>

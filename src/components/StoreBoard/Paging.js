@@ -34,7 +34,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
     <StyledDiv>
       <MainBoardTitle>{restaurant}</MainBoardTitle>
       <ButtonWrapper>
-        <Button width='70px' height='30px' onClick={() => { window.location.href = 'http://43.201.204.106:8080/boards/post'}}>글쓰기</Button>
+        <Button width='70px' height='35px' onClick={() => { window.location.href = 'http://43.201.204.106:8080/boards/post'}}>글쓰기</Button>
       </ButtonWrapper>
       {data.posts
         .slice(items * (page - 1), items * page)
