@@ -13,7 +13,7 @@ const StoreInfo = ({ title }) => {
   const [data, setData] = useState([]); // 데이터를 저장할 상태
   const fetchAllData = async () => {
     try {
-      const response = await axios.get(`http://43.201.204.106:8080/boards/${title}?`);
+      const response = await axios.get(`http://223.130.131.136:8080/boards/${title}?`);
       const allData = response.data.posts;
       setData(allData);
     } catch (error) {
@@ -24,7 +24,7 @@ const StoreInfo = ({ title }) => {
   const [infoData, setInfoData] = useState([]);
   const fetchInfoData = async () => {
     try {
-      const response = await axios.get(`http://43.201.204.106:8080/boards/restaurantInfo/${title}`)
+      const response = await axios.get(`http://223.130.131.136:8080/boards/restaurantInfo/${title}`)
       const allData = response.data;
       setInfoData(allData);
     } catch (error) {

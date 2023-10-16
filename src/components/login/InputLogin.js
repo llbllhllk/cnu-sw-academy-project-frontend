@@ -30,7 +30,7 @@ function InputLogin() {
   const handleLogin = async () => {
     try {
       const data = { memberId, password };
-      const response = await axios.post('http://43.201.204.106:8080/member/login', data, {
+      const response = await axios.post('http://223.130.131.136:8080/member/login', data, {
         withCredentials: true,
       });
 
@@ -44,7 +44,8 @@ function InputLogin() {
         // // 홈 페이지로 이동
         window.location.href = '/'; // 페이지 이동
       } else {
-        console.error('로그인 실패');
+        alert('로그인 실패')
+        // console.error('로그인 실패');
       }
     } catch (error) {
       console.error('오류 발생', error);

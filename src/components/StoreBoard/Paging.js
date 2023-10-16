@@ -13,7 +13,7 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
   useEffect(() => {
     const getClick = async () => {
       try {
-        const response = await axios.get(`http://43.201.204.106:8080/boards/${restaurant}?`);
+        const response = await axios.get(`http://223.130.131.136:8080/boards/${restaurant}?`);
         setData(response.data);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
