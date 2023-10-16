@@ -20,7 +20,7 @@ const ReviewWrite = ({ width, height, handleCloseClick, restaurantName, color })
     console.log(rating)
     console.log(content)
     axios
-      .post(`http://43.201.204.106:8080/review/${restaurantName}/post`, { rating: rating, content: content})
+      .post(`http://223.130.131.136:8080/review/${restaurantName}/post`, { rating: rating, content: content})
       .then((response) => {
         console.log(response.data);
         setRating(0)

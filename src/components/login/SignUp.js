@@ -45,14 +45,12 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://43.201.204.106:8080/join/mailConfirm',
+        'http://223.130.131.136:8080/mailConfirm',
         { email: email }
       );
-      if (response.data.success) {
+      if (response.data.success === true) {
         alert('인증번호가 발송되었습니다');
-      } else {
-        alert('인증번호 전송이 실패했습니다. 다시 시도해주세요.');
-      }
+      } 
     } catch (error) {
       alert('인증번호 전송이 실패했습니다. 다시 시도하렴 ');
     }
@@ -63,10 +61,10 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://43.201.204.106:8080/emailCheck',
+        'http://223.130.131.136:8080/emailCheck',
         { email: email, authCode: authCode }
       );
-      if (response.data.success) {
+      if (response.data.success === true) {
         alert('인증이 성공했습니다');
       } else {
         alert('인증이 실패했어요. 다시 시도해주세요.');
@@ -93,7 +91,7 @@ const SignUp = () => {
     e.preventDefault();
     if (passwordAccord) {
       const finalSignUp = async() => {
-          const response = await axios.post('http://43.201.204.106:8080/member/join',formData)
+          const response = await axios.post('http://223.130.131.136:8080/member/join',formData)
         try{
           if (response.data.message === "회원가입 성공") {
             alert('회원가입에 성공했습니다');
