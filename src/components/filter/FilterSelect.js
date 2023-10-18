@@ -67,14 +67,14 @@ function FilterSelect() {
 const StyledTable = styled.table`
   width: 800px;
   height: 500px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid rgb(0 114 188);
   border-radius: 7px;
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
 
   th {
-    border: 1px solid #d9d9d9;
+    border: 1px solid rgb(0 114 188);
     padding: 10px;
     text-align: center;
     border-radius: 7px;

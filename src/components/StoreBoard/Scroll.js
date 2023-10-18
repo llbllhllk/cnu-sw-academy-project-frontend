@@ -42,7 +42,7 @@ const Scroll = ({ onRestaurantClick }) => {
 
 const StyleDiv = styled.div`
   &:hover {
-    background-color: #ff9704;
+    background-color: #0072BC;
     border-radius : 7px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease-out;
   }
