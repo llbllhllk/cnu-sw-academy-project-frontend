@@ -104,14 +104,14 @@ const PaginationBox = styled.div`
   }
   ul.pagination li a {
     text-decoration: none;
-    color: #ff9704;
+    color: #0072BC;
     font-size: 1rem;
   }
   ul.pagination li.active a {
     color: white;
   }
   ul.pagination li.active {
-    background-color: #ff9704;
+    background-color: #0072BC;
   }
   ul.pagination li a:hover,
   ul.pagination li a.active {

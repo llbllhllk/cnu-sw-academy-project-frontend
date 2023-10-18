@@ -308,7 +308,7 @@ const DropdownItem = styled.div`
 
 const ConfirmButton = styled(Button)`
   position: absolute;
-  top: 280px; /* 상단 위치 조정 */
+  top: 330px; /* 상단 위치 조정 */
   left: 900px; /* 좌측 위치 조정 */
 `;
 

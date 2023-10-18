@@ -78,7 +78,7 @@ const StyledButtonContainer = styled.div`
 const StyledButton = styled.button`
   border-radius: 14px;
   padding: 4px 12px;
-  background-color: ${({ active }) => (active ? "#ff9704" : "silver")};
+  background-color: ${({ active }) => (active ? "#0072BC" : "silver")};
   color: #fff;
   font-weight: 700;
   transition: background-color 0.2s ease, box-shadow 0.2s ease-out;
@@ -87,7 +87,7 @@ const StyledButton = styled.button`
   margin-left: ${({ marginLeft }) => marginLeft || "0"}; // 마진을 추가합니다.
 
   &:hover {
-    background-color: #ff9704;
+    background-color: #0072BC;
     box-shadow: 3px -3px 0px 0px rgba(255, 255, 255, 0.45) inset;
   }
 `;
