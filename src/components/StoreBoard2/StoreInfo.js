@@ -80,8 +80,6 @@ const StoreInfo = ({ title }) => {
               <div>
                 <StoreBoardItem  key={index} height={'80px'}>
                 <p>{restaurant.content}</p>
-                <p>{`좋아요 : ${restaurant.postLikeCount}`}  </p>
-                <p>{`${restaurant.createdAt[0]}-${restaurant.createdAt[1]}-${restaurant.createdAt[2]} ${restaurant.createdAt[3]}시 ${restaurant.createdAt[4]}분 ` }</p>
                 </StoreBoardItem>
               </div>
               // storeBoardItem에 onclick이 적용 안돼서, div 태그에 key 값을 주고 onclick을 넣음

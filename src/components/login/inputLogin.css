@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+.Nam{
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 64px;
+}
+
+*{
+  font-family: 'Jua', sans-serif;
+}

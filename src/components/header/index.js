@@ -2,12 +2,13 @@ import Button from 'components/common/Button';
 import Input from 'components/common/Input';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import './index.css'
 
 const Header = () => {
   return (
     <HeaderContainer>
       <SubContainer>
-      <h1 onClick={()=>{window.location.reload()}}>냠냠</h1>
+      <h1 className="Nam" onClick={()=>{window.location.reload()}}>냠냠</h1>
       <Link to="/filter">
         <Form>
           <Input width='300px' placeholder='키워드 검색창으로 이동해요.' />
