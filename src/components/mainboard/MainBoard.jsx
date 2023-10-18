@@ -23,7 +23,7 @@ console.log(items*(page-1), items*(page-1)+items)
           <StoreBoardItem width={'650px'} height={'80px'} key={i}>
             <h3>{v.title}</h3>
             <div>{v.createdAt}</div>
-            <div>{v.postLikeCount}</div>
+            <div>{v.postLikeCount+"개"}</div>
           </StoreBoardItem>
         )
 

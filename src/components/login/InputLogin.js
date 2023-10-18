@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Button from 'components/common/Button';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
+import './inputLogin.css'
 
 function InputLogin() {
   const [memberId, setMemberId] = useState('');
@@ -54,7 +55,7 @@ function InputLogin() {
 
   return (
     <CenteredContainer>
-      <Header>냠냠</Header>
+      <Header className='Nam'>냠냠</Header>
       <LoginContainer>
         {isLoggedIn ? (
           console.log("로그인 완료")
