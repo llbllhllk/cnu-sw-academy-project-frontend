@@ -33,19 +33,19 @@ function FilterSelect() {
               (<tr key={index}>
                 <td
                   onClick={foodItem ? () => setSelectedFood(foodItem) : null}
-                  style={{ backgroundColor: selectedFood === foodItem ? '#ff9704' : null }}
+                  style={{ backgroundColor: selectedFood === foodItem ? '#0072BC' : null }}
                 >
                   {foodItem}
                 </td>
                 <td
                   onClick={department[index] ? () => setSelectedDepartment(department[index]) : null}
-                  style={{ backgroundColor: selectedDepartment === department[index] ? '#ff9704' : null }}
+                  style={{ backgroundColor: selectedDepartment === department[index] ? '#0072BC' : null }}
                 >
                   {department[index]}
                 </td>
                 <td
                   onClick={place[index] ? () => setSelectedPlace(place[index]) : null}
-                  style={{ backgroundColor: selectedPlace === place[index] ? '#ff9704' : null }}
+                  style={{ backgroundColor: selectedPlace === place[index] ? '#0072BC' : null }}
                 >
                   {place[index]}
                 </td>
@@ -67,14 +67,14 @@ function FilterSelect() {
 const StyledTable = styled.table`
   width: 800px;
   height: 500px;
-  border: 1px solid rgb(0 114 188);
+  border: 1px solid #d9d9d9;
   border-radius: 7px;
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
 
   th {
-    border: 1px solid rgb(0 114 188);
+    border: 1px solid #d9d9d9;
     padding: 10px;
     text-align: center;
     border-radius: 7px;
@@ -93,7 +93,7 @@ const StyledTable = styled.table`
     transition: background-color .2s;
 
     &:not(:empty):hover {
-      background-color: #ff9704;
+      background-color: #0072BC;
     }
   }
 `;

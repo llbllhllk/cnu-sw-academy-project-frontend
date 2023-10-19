@@ -12,33 +12,35 @@ const MainBoard = ({title,dummy}) => {
 console.log(items*(page-1), items*(page-1)+items)
 
   return (
-    <div>
-      <h2>{title}</h2>
-      <Card width={'700px'} height={'700px'}>
-      {dummy.slice(
-        items*(page-1),
-        items*(page-1)+items
-      ).map((v,i) => {
-        return (
-          <StoreBoardItem width={'650px'} height={'80px'} key={i}>
-            <h3>{v.title}</h3>
-            <div>{v.createdAt}</div>
-            <div>{v.postLikeCount+"개"}</div>
-          </StoreBoardItem>
-        )
+    <StyledDiv>
+      <StyledH1>{title}</StyledH1>
+      <StyledMain>
+        <Card width={'700px'} height={'700px'}>
+        {dummy.slice(
+          items*(page-1),
+          items*(page-1)+items
+        ).map((v,i) => {
+          return (
+            <StoreBoardItem width={'650px'} height={'80px'} key={i}>
+              <h3>{v.title}</h3>
+              <div>{v.createdAt}</div>
+              <div>{v.postLikeCount+"개"}</div>
+            </StoreBoardItem>
+          )
 
-      })}
-      <PaginationBox>
-        <Pagination
-          activePage={page}
-          itemsCountPerPage={items}
-          totalItemsCount={dummy.length-1}
-          pageRangeDisplayed={5}
-          onChange={handlePageChange}>
-        </Pagination>
-      </PaginationBox>
-      </Card>
-    </div>
+        })}
+        <PaginationBox>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={items}
+            totalItemsCount={dummy.length-1}
+            pageRangeDisplayed={5}
+            onChange={handlePageChange}>
+          </Pagination>
+        </PaginationBox>
+        </Card>
+      </StyledMain>
+    </StyledDiv>
   )
 }
 
@@ -57,11 +59,34 @@ const PaginationBox = styled.div`
   }
   ul.pagination li:first-child{ border-radius: 5px 0 0 5px; }
   ul.pagination li:last-child{ border-radius: 0 5px 5px 0; }
-  ul.pagination li a { text-decoration: none; color: #337ab7; font-size: 1rem; }
+  ul.pagination li a { text-decoration: none; color: #0072BC; font-size: 1rem; }
   ul.pagination li.active a { color: white; }
-  ul.pagination li.active { background-color: #337ab7; }
+  ul.pagination li.active { background-color: #0072BC; }
   ul.pagination li a:hover,
   ul.pagination li a.active { color: blue; }
 `
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+  height: 100vh;
+`
+
+const StyledH1 =  styled.h1`
+  position: absolute;
+  top: 20px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+`
+
+const StyledMain = styled.div`
+  position: absolute;
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+`
+
 
 export default MainBoard
