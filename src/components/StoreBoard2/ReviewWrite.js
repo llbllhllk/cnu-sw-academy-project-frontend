@@ -61,7 +61,7 @@ const ReviewWrite = ({ width, height, handleCloseClick, restaurantName, color })
         />
       </TextareaWrapper>
       <StyledButton1>
-        <CreateBtn style={{ backgroundColor: '#ff9704' }} onClick={sendDataToServer}>작성</CreateBtn>
+        <CreateBtn style={{ backgroundColor: '#0072BC'}} onClick={sendDataToServer}>작성</CreateBtn>
       </StyledButton1>
       <StyledButton2>
         <CreateBtn style={{ backgroundColor: 'silver' }} onClick={handleCloseClick}>닫기</CreateBtn>

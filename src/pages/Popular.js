@@ -35,7 +35,7 @@ const Popular = () => {
   
   return (
   <>
-  <MainBoard title={'자유게시판'} dummy={dummy}/>
+  <MainBoard title={'통합 게시판'} dummy={dummy}/>
   </>
   )
 }
