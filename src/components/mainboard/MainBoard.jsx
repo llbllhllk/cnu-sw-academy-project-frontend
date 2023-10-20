@@ -3,6 +3,8 @@ import Card from "components/common/Card";
 import { useState} from 'react'
 import Pagination from 'react-js-pagination'
 import styled from 'styled-components'
+import Button from "components/common/Button";
+import { Link } from "react-router-dom";
 
 const MainBoard = ({title,dummy}) => {
   const [page, setPage] = useState(1);
@@ -14,6 +16,11 @@ console.log(items*(page-1), items*(page-1)+items)
   return (
     <StyledDiv>
       <StyledH1>{title}</StyledH1>
+      <Link to={'/'}>
+        <StyledBtn>
+          <Button width={'70px'}height={'30px'}>Home</Button>
+        </StyledBtn>
+      </Link>
       <StyledMain>
         <Card width={'700px'} height={'700px'}>
         {dummy.slice(
@@ -86,6 +93,13 @@ const StyledMain = styled.div`
   bottom: 20px; 
   left: 50%; 
   transform: translateX(-50%); 
+`
+const StyledBtn = styled.div`
+position: absolute;
+top: 30px; 
+left: 70%; 
+margin-left: -15px;
+pointer: cursor;
 `
 
 

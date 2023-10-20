@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';
 
+
 const restaurantData = [
   // 각 슬라이드에 표시할 음식점 데이터를 배열로 정의하세요
   [
@@ -80,12 +81,12 @@ const Home = () => {
     {
       title: '통합 게시판',
       board: board.freeBoard,
-      link: 'http://223.130.131.136:8080/freeBoard',
+      link: '/popular',
     },
     {
-      title: 'Hot게시판',
+      title: 'Hot 게시판',
       board: board.popularBoard,
-      link: 'http://223.130.131.136:8080/popularBoard',
+      link: '/hot',
     },
   ];
 
