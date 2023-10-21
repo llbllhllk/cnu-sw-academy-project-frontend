@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './index.css';
 import CNU from './images/CNU.svg';
 import Cookies from 'js-cookie';
+import Search from './images/search.png'
 
 const Header = ({ Uni }) => {
   const handleLogout = () => {
@@ -24,13 +25,14 @@ const Header = ({ Uni }) => {
         
           <Div>
             <Link to="/filter">
-              <button type='button' width='150px' height='55px'>
+              <StyledBtn>
                 키워드 검색
-              </button>
+                <img src={Search} width={'20px'} height={'20px'} alt='검색' />
+              </StyledBtn>
             </Link>
-            <p onClick={handleLogout} type='button' width='72px'>
+            <StyledP onClick={handleLogout} type='button' width='72px'>
               로그아웃
-            </p>
+            </StyledP>
           </Div>
         
       </SubContainer>
@@ -52,12 +54,28 @@ const SubContainer = styled.div`
 
 const Div = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 380px;
 `;
 
 const StyledLogo = styled.div`
   transform: translate(-350px,-5px);
 `;
+
+const StyledP = styled.p`
+  absolute
+  cursor: pointer;
+  padding-left : 10px;
+  padding-top : 7px
+`
+const StyledBtn = styled.button`
+  border: 1px solid #d9d9d9;
+  border-radius: 14px;
+  padding: 8px 12px;
+  outline: none;
+  width : 225px; 
+  height : 35px;
+  font-size : 15px;
+`
 
 export default Header;
