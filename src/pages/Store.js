@@ -5,6 +5,8 @@ import StoreList from "components/StoreBoard/StoreList";
 import Paging from "components/StoreBoard/Paging";
 import Scroll from "components/StoreBoard/Scroll";
 import StoreInfo from "components/StoreBoard2/StoreInfo";
+import { Link } from "react-router-dom";
+
 
 const Store = () => {
   const [restaurant, setRestaurant] = useState("55와인포차 본점");
@@ -52,8 +54,12 @@ const Store = () => {
         >
           식당상세정보
         </StyledButton>
+        <Link to='/'>
+          <StyledBtn>Home</StyledBtn>
+        </Link>
       </StyledButtonContainer>
     </>
+    
   );
 };
 
@@ -91,5 +97,16 @@ const StyledButton = styled.button`
     box-shadow: 3px -3px 0px 0px rgba(255, 255, 255, 0.45) inset;
   }
 `;
+
+const StyledBtn = styled.div`
+position: absolute;
+font-size: 20px;
+left : 620px;
+top : 0px;
+pointer: cursor;
+border : 1px solid silver;
+padding : 3px 10px;
+border-radius : 7px;
+`
 
 export default Store;

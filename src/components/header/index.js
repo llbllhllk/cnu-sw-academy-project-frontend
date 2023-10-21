@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import './index.css';
 import CNU from './images/CNU.svg';
+import KAIST from './images/KAIST_logo.png'
 import Cookies from 'js-cookie';
 import Search from './images/search.png'
 
@@ -14,13 +15,13 @@ const Header = ({ Uni }) => {
     // 로그아웃 후에 홈페이지를 다시 로드합니다.
     window.location.href = '/login';
   };
-
+  const a = true
   return (
     <HeaderContainer>
       <SubContainer>
         <h1 className="Nam" onClick={() => { window.location.reload() }}>냠냠</h1>
         <StyledLogo onClick={() => { window.location.reload() }}>
-          <img src={CNU} width={'70px'} height={'70px'} alt='충남대' />
+          {a ? <img src={CNU} width={'70px'} height={'70px'} alt='충남대' /> :<img src={KAIST} width={'70px'} height={'70px'} alt='카이스트' />}
         </StyledLogo>
         
           <Div>

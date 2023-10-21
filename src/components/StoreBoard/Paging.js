@@ -4,6 +4,8 @@ import Pagination from 'react-js-pagination';
 import styled from 'styled-components';
 import StoreBoardItem from './StoreBoardItem';
 import Button from 'components/common/Button';
+import Love from './images/Love.png'
+
 
 const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
   const [data, setData] = useState([]);
@@ -44,9 +46,9 @@ const Paging = ({ restaurant }) => { // restaurant 값을 props로 받음
               <StoreBoardItem height='90px'>
                 {console.log(post)}
                 <TestDiv>
-                <p>{post.title}</p>
-                <p>{`좋아요 : ${post.postLikeCount}`}  </p>
-                <p>{`${post.createdAt[0]}-${post.createdAt[1]}-${post.createdAt[2]} ${post.createdAt[3]}시 ${post.createdAt[4]}분 ` }</p>
+                <StyledP1>{post.title}</StyledP1>
+                <StyledP2><img src={Love} width={'20px'} height={'20px'} alt='좋아요' />{` ${post.postLikeCount}`}  </StyledP2>
+                <StyledP3>{`${post.createdAt[0]}-${post.createdAt[1]}-${post.createdAt[2]} ${post.createdAt[3]}시 ${post.createdAt[4]}분 ` }</StyledP3>
                 </TestDiv>
               </StoreBoardItem>
             </div>
@@ -129,6 +131,24 @@ const MainBoardTitle = styled.h3`
 `;
 
 const TestDiv = styled.div`
-  textalign : center;
+  flex: 1;
+  text-align : center;
+`
+
+const StyledP1 = styled.p`
+  position: relative;
+  font-size: 25px;
+  top: 20px;
+
+`
+
+const StyledP2 = styled.p`
+  position: relative;
+  left: 300px;
+`
+
+const StyledP3 = styled.p`
+  position: relative;
+  left: 260px;
 `
 export default Paging;

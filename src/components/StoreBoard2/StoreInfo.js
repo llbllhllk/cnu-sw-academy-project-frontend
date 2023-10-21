@@ -36,9 +36,8 @@ const StoreInfo = ({ title }) => {
     fetchAllData();
     fetchInfoData();
   }, [title]);
-  console.log(infoData)
-  const [isWriting, setIsWriting] = useState(false); // "글쓰기" 버튼 클릭 여부 상태 추가
 
+  const [isWriting, setIsWriting] = useState(false); // "글쓰기" 버튼 클릭 여부 상태 추가
   const handleWriteClick = () => setIsWriting(true); // "글쓰기" 버튼 클릭 시 isWriting 상태를 true로 설정
 
   return (
@@ -79,7 +78,7 @@ const StoreInfo = ({ title }) => {
             {data.map((restaurant, index) => (
               <div>
                 <StoreBoardItem  key={index} height={'80px'}>
-                <p>{restaurant.content}</p>
+                <StyledP>{restaurant.content}</StyledP>
                 </StoreBoardItem>
               </div>
               // storeBoardItem에 onclick이 적용 안돼서, div 태그에 key 값을 주고 onclick을 넣음
@@ -106,5 +105,10 @@ const ButtonWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+`
+const StyledP = styled.p`
+  flex: 1;
+  text-align : center;
+  font-size : 25px;
 `
 export default StoreInfo;
