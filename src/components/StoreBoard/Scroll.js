@@ -31,7 +31,7 @@ const Scroll = ({ onRestaurantClick }) => {
           <StyleDiv  key={index} onClick={() => onClickHandler(restaurant)} >
               <StoreBoardItem height={'80px'}>
                 {/* 클릭 시 onClickHandler 호출 및 restaurant 전달 */}
-                <p style={{ fontSize: "25px" }} >{restaurant}</p>
+                <Styledp>{restaurant}</Styledp>
               </StoreBoardItem>
           </StyleDiv>
         ))}
@@ -48,8 +48,9 @@ const StyleDiv = styled.div`
   }
 `
 
-// const Styledp = styled.div`
-//   text-align: center;
-//   font-size : 20px;
-// `
+const Styledp = styled.div`
+  flex: 1;
+  text-align : center;
+  font-size : 25px;
+`
 export default Scroll;
